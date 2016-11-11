@@ -17,5 +17,5 @@ class IndexView(TemplateView):
     template_name = "index.html"
 
 
-class ProfileView(ListView):
+class ProfileListView(ListView):
     model = Profile
