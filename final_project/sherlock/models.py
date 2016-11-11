@@ -13,14 +13,29 @@ def create_user_profile(**kwargs):
 
 class Profile(models.Model):
     user = models.OneToOneField('auth.User')
-    picture = models.ImageField()
+    picture = models.FileField(default='picture.png')
     first_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=50, blank=True)
     last_name = models.CharField(max_length=50)
     gender = models.CharField(max_length=25, blank=True)
+    joined = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.first_name
+        return self.user.username
+
+    @property
+    def profile_pic(self):
+        if self.picture:
+            return self.picture.url
+
+    @property
+    def get_year(self):
+        year = self.joined.year
+        return "Joined in {}".format(year)
+
+    # @property
+    # def is_owner(self):
+    #     return Profile.objects.filter(user=self)
 
 
 class About(models.Model):

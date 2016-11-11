@@ -1,12 +1,26 @@
-
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Sherlock</title>
+    <link rel="stylesheet" href="{% static 'semantic.css' %}" media="screen" type="text/css">
   </head>
   <body>
-    Hey Danielle, you da best.
+
+    <div class="ui vertical sticky menu fixed top">
+
+      <div class="item">
+    {% if not request.user.is_authenticated %}
+    <a class="item" href="{% url 'login' %}">Login</a>
+    {% else %}
+    <a class="item" href="{% url 'logout' %}?next={% url 'index_view'%}">Logout</a>
+    {% endif %}
+    <a class="item" href="{% url 'user_create_view' %}">Create User</a>
+    <a class="item" href="{% url 'index_view' %}">Home</a>
+    </div>
+    </div>
+
     {% block content %}
     {% endblock %}
   </body>

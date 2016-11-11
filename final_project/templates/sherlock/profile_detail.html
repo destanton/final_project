@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+  {% if request.user.is_authenticated %}
+<div class="ui people shape">
+  <div class="sides">
+    <div class="active side">
+      <div class="ui card">
+        <div class="image">
+          <img src="{{object.picture.url}}" alt="Profile Photo" />
+        </div>
+        <div class="content">
+          <div class="header">{{object.first_name}} {{object.last_name}}</div>
+          <div class="meta">
+            <a>Acquaintances</a>
+          </div>
+          <div class="description">
+            BLAH
+          </div>
+        </div>
+        <div class="extra content">
+          <span class="right floated">
+            {{object.get_year}}
+          </span>
+          <span>
+            <i class="user icon"></i>
+            {{object}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      {{item.first_name}}
+      {{item.last_name}}
+      {{item.gender}}
+
+
+{% endif %}
+
+{% endblock %}

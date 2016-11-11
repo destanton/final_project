@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm, User
 from django.urls import reverse_lazy, reverse
@@ -17,5 +17,8 @@ class IndexView(TemplateView):
     template_name = "index.html"
 
 
-class ProfileListView(ListView):
+class ProfileDetailView(DetailView):
     model = Profile
+
+    def get_object(self):
+        return Profile.objects.get(user=self.request.user)
