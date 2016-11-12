@@ -2,12 +2,14 @@
 
 {% block content %}
 <div class="pusher">
+  {% if request.user.is_authenticated %}
+    {% if object.user == request.user %}
   <form class="" action="" method="post">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" name="" value="Login">
+    <input type="submit" name="" value="Update">
   </form>
+    {% endif %}
+  {% endif %}
 </div>
-
-
 {% endblock %}

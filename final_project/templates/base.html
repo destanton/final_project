@@ -7,20 +7,21 @@
     <link rel="stylesheet" href="{% static 'semantic.css' %}" media="screen" type="text/css">
   </head>
   <body>
-
-    <div class="ui vertical sticky menu fixed top">
-
+    <div class="ui visible inverted left vertical labeled icon sidebar menu">
       <div class="item">
-    {% if not request.user.is_authenticated %}
-    <a class="item" href="{% url 'login' %}">Login</a>
-    {% else %}
-    <a class="item" href="{% url 'logout' %}?next={% url 'index_view'%}">Logout</a>
-    {% endif %}
-    <a class="item" href="{% url 'user_create_view' %}">Create User</a>
-    <a class="item" href="{% url 'index_view' %}">Home</a>
+        <div class="item">
+          Welcome, {{request.user|title}}
+        </div>
+        <a class="item" href="{% url 'index_view' %}"><i class="home icon"></i>Home</a>
+        {% if not request.user.is_authenticated %}
+        <a class="item" href="{% url 'login' %}">Login</a>
+        {% else %}
+        <a class="item" href="{% url 'logout' %}?next={% url 'index_view'%}">Logout</a>
+        {% endif %}
+        <a class="item" href="{% url 'user_create_view' %}">Create User</a>
+        <a class="item" href="{% url 'profile_detail_view' %}">Profile</a>
+      </div>
     </div>
-    </div>
-
     {% block content %}
     {% endblock %}
   </body>
