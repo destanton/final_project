@@ -25,15 +25,14 @@
           </span>
           <span>
             <i class="user icon"></i>
-            {{object}}
+            {{object}} <br>
+            <a href="{% url 'profile_update_view' object.id %}"></i>Update Profile</a>
           </span>
+
         </div>
       </div>
     </div>
   </div>
-  <button class="compact ui black icon button">
-  <a href="{% url 'profile_update_view' object.id %}"><i class="user icon"></i>Update Profile</a>
-  </button>
 </div>
       {{item.first_name}}
       {{item.last_name}}
