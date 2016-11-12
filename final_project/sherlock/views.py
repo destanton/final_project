@@ -29,5 +29,5 @@ class ProfileUpdateView(UpdateView):
     success_url = reverse_lazy('profile_detail_view')
     fields = ('picture', 'first_name', 'middle_name', 'last_name', 'gender', )
 
-    def get_objects(self):
+    def get_object(self):
         return Profile.objects.get(user=self.request.user)
