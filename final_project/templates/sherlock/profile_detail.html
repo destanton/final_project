@@ -2,8 +2,7 @@
 
 {% block content %}
 
-<div class="pusher">
-  {% if request.user.is_authenticated %}
+{% if request.user.is_authenticated %}
 <div class="ui people shape">
   <div class="sides">
     <div class="active side">
@@ -35,7 +34,6 @@
   <button class="compact ui black icon button">
   <a href="{% url 'profile_update_view' object.id %}"><i class="user icon"></i>Update Profile</a>
   </button>
-</div>
 </div>
       {{item.first_name}}
       {{item.last_name}}

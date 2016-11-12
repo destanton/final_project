@@ -7,22 +7,25 @@
     <link rel="stylesheet" href="{% static 'semantic.css' %}" media="screen" type="text/css">
   </head>
   <body>
-    <div class="ui visible inverted left vertical labeled icon sidebar menu">
+    <div class="ui visible inverted left vertical labeled icon sidebar menu" style="width: 200px !important; height: 1813px !important; left: 0px; top: 0px;">
       <div class="item">
+        <a class="item" href="{% url 'index_view' %}"><i class="home icon"></i>Home</a>
+        {% if not request.user.is_authenticated %}
+        <a class="item" href="{% url 'user_create_view' %}">Create User</a>
+        <a class="item" href="{% url 'login' %}">Login</a>
+        {% else %}
         <div class="item">
           Welcome, {{request.user|title}}
         </div>
-        <a class="item" href="{% url 'index_view' %}"><i class="home icon"></i>Home</a>
-        {% if not request.user.is_authenticated %}
-        <a class="item" href="{% url 'login' %}">Login</a>
-        {% else %}
+        <a class="item" href="{% url 'profile_detail_view' %}">Profile</a>
         <a class="item" href="{% url 'logout' %}?next={% url 'index_view'%}">Logout</a>
         {% endif %}
-        <a class="item" href="{% url 'user_create_view' %}">Create User</a>
-        <a class="item" href="{% url 'profile_detail_view' %}">Profile</a>
       </div>
     </div>
+    <div class="pusher">
     {% block content %}
     {% endblock %}
+    </div>
+
   </body>
 </html>
