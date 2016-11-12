@@ -39,6 +39,7 @@ class Profile(models.Model):
 
 
 class About(models.Model):
+    user = models.OneToOneField('auth.User')
     biography = models.TextField(max_length=255)
 
     def __str__(self):
