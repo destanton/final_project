@@ -33,14 +33,14 @@ class Profile(models.Model):
         year = self.joined.year
         return "Joined in {}".format(year)
 
-    # @property
-    # def is_owner(self):
-    #     return Profile.objects.filter(user=self)
+    @property
+    def get_about(self):
+        return About.objects.get(user=self.user).biography
 
 
 class About(models.Model):
     user = models.OneToOneField('auth.User')
     biography = models.TextField(max_length=255)
 
-    def __str__(self):
-        return self.biography
+    # def __str__(self):
+    #     return self.biography

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'semantic.css' %}" media="screen" type="text/css">
   </head>
   <body>
+
     <div class="ui visible inverted left vertical labeled icon sidebar menu" style="width: 200px !important; height: 1813px !important; left: 0px; top: 0px;">
       <div class="item">
         <a class="item" href="{% url 'index_view' %}"><i class="home icon"></i>Home</a>
@@ -22,10 +23,23 @@
         {% endif %}
       </div>
     </div>
+    </div>
     <div class="pusher">
+      <div class="ui basic segment"></div>
+
+
+
     {% block content %}
     {% endblock %}
-    </div>
 
+
+    </div>
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="{% static 'semantic.js' %}"></script>
+    {% block javascript %}
+    {% endblock %}
   </body>
 </html>
