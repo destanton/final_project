@@ -43,7 +43,66 @@
   <div class="six wide column">
     <div class="ui raised very padded text container segment">
     <h2 class="ui header">About Details</h2>
-    {{object.get_about}}
+    {% for thing in object.get_about %}
+    <div class="ui relaxed list">
+      <div class="item">
+        <div class="header">Biography</div>
+          {{thing.biography}}
+      </div>
+      <div class="item">
+        <div class="header">Birthday</div>
+          {{thing.birthdate}}
+      </div>
+      <div class="item">
+        <div class="header">Birth City</div>
+          {{thing.city_of_birth}}
+      </div>
+      <div class="item">
+        <div class="header">Birth State</div>
+          {{thing.state_of_birth}}
+      </div>
+      <div class="item">
+        <div class="header">Birth Country</div>
+          {{thing.country_of_birth}}
+      </div>
+      <div class="item">
+        <div class="header">Birth Gender</div>
+          {{thing.sex_at_birth}}
+      </div>
+      <div class="item">
+        <div class="header">Eye Color</div>
+          {{thing.eye_color}}
+      </div>
+      <div class="item">
+        <div class="header">Mother's First Name</div>
+          {{thing.mother_first_name}}
+      </div>
+      <div class="item">
+        <div class="header">Mother's Maiden Name</div>
+          {{thing.mother_maiden_name}}
+      </div>
+      <div class="item">
+        <div class="header">Mother's Last Name</div>
+          {{thing.mother_last_name}}
+      </div>
+      <div class="item">
+        <div class="header">Father's First Name</div>
+          {{thing.father_first_name}}
+      </div>
+      <div class="item">
+        <div class="header">Father's Last Name</div>
+          {{thing.father_last_name}}
+      </div>
+      <div class="item">
+        <div class="header">Birth Hospital</div>
+          {{thing.birth_hospital}}
+      </div>
+      <div class="item">
+        <div class="header">Searching For My:</div>
+          {{thing.searching_for}}
+      </div>
+    </div>
+    {% endfor %}
   </div>
   </div>
 </div>

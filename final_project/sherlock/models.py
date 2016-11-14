@@ -35,7 +35,7 @@ class Profile(models.Model):
 
     @property
     def get_about(self):
-        return About.objects.get(user=self.user).biography
+        return About.objects.filter(user=self.user)
 
 
 GENDER = [
