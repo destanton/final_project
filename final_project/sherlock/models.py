@@ -39,8 +39,8 @@ class Profile(models.Model):
 
 
 GENDER = [
-    ('M', 'MALE'),
-    ('F', 'FEMALE')
+    ('M', 'Male'),
+    ('F', 'Female')
 ]
 
 BLACK = 'blk'
@@ -52,13 +52,13 @@ HAZEL = 'hzl'
 OTHER = 'oth'
 
 EYE_COLOR = [
-    (BLACK, 'BLACK'),
-    (BLUE, 'BLUE'),
-    (BROWN, 'BROWN'),
-    (GRAY, 'GRAY'),
-    (GREEN, 'GREEN'),
-    (HAZEL, 'HAZEL'),
-    (OTHER, 'OTHER')
+    (BLACK, 'Black'),
+    (BLUE, 'Blue'),
+    (BROWN, 'Brown'),
+    (GRAY, 'Gray'),
+    (GREEN, 'Green'),
+    (HAZEL, 'Hazel'),
+    (OTHER, 'Other')
 
 
 ]
@@ -69,10 +69,10 @@ PARENT = 'prt'
 SIBLING = 'sbl'
 
 FAMILY = [
-    (COUSIN, 'COUSIN'),
-    (CHILD, 'CHILD'),
-    (PARENT, 'PARENT'),
-    (SIBLING, 'SIBLING')
+    (COUSIN, 'Cousin'),
+    (CHILD, 'Child'),
+    (PARENT, 'Parent'),
+    (SIBLING, 'Sibling')
 ]
 
 

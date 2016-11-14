@@ -67,11 +67,11 @@
       </div>
       <div class="item">
         <div class="header">Birth Gender</div>
-          {{thing.sex_at_birth}}
+          {{thing.get_sex_at_birth_display}}
       </div>
       <div class="item">
         <div class="header">Eye Color</div>
-          {{thing.eye_color}}
+          {{thing.get_eye_color_display}}
       </div>
       <div class="item">
         <div class="header">Mother's First Name</div>
@@ -99,7 +99,7 @@
       </div>
       <div class="item">
         <div class="header">Searching For My:</div>
-          {{thing.searching_for}}
+          {{thing.get_searching_for_display}}
       </div>
     </div>
     {% endfor %}
