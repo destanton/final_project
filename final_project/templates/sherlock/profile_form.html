@@ -4,11 +4,27 @@
 <div class="pusher">
   {% if request.user.is_authenticated %}
     {% if object.user == request.user %}
-  <form class="" action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" name="" value="Update">
-  </form>
+      <form class="ui large form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="field">
+          <input type="image" name="picture" alt="Image_name">
+        </div>
+        <div class="field">
+          <input type="text" name="first_name" placeholder="First Name">
+        </div>
+        <div class="field">
+          <input type="text" name="middle_name" placeholder="Middle Name">
+        </div>
+        <div class="field">
+          <input type="text" name="first_name" placeholder="Last Name">
+        </div>
+        <div class="field">
+          <input type="text" name="first_name" placeholder="Gender">
+        </div>
+
+
+        <input type="submit" name="" value="Update">
+      </form>
     {% endif %}
   {% endif %}
 </div>
