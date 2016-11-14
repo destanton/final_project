@@ -85,12 +85,12 @@ class About(models.Model):
     country_of_birth = models.CharField(max_length=255, blank=True)
     sex_at_birth = models.CharField(max_length=1, choices=GENDER)
     eye_color = models.CharField(max_length=3, choices=EYE_COLOR)
-    mother_first_name = models.CharField(max_length=150)
+    mother_first_name = models.CharField(max_length=150, blank=True)
     mother_maiden_name = models.CharField(max_length=150, blank=True)
     mother_last_name = models.CharField(max_length=150, blank=True)
     father_first_name = models.CharField(max_length=150, blank=True)
     father_last_name = models.CharField(max_length=150, blank=True)
-    birth_hospital = models.CharField(max_length=150)
+    birth_hospital = models.CharField(max_length=150, blank=True)
     searching_for = models.CharField(max_length=3, choices=FAMILY)
 
     # def __str__(self):
