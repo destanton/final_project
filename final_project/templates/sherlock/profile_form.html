@@ -4,10 +4,10 @@
 <div class="pusher">
   {% if request.user.is_authenticated %}
     {% if object.user == request.user %}
-      <form class="ui large form" action="" method="post" enctype="multipart/form-data">
+      <form class="ui large form" action="{% url 'profile_detail_view' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="field">
-          <input type="image" name="picture" alt="Image_name">
+          <input type="file" name="picture" alt="Image_name">
         </div>
         <div class="field">
           <input type="text" name="first_name" placeholder="First Name">
@@ -22,8 +22,9 @@
           <input type="text" name="first_name" placeholder="Gender">
         </div>
 
-
-        <input type="submit" name="" value="Update">
+        <div class="">
+          <input class="ui fluid large teal submit button" type="submit" name="" value="Update">
+        </div>
       </form>
     {% endif %}
   {% endif %}
