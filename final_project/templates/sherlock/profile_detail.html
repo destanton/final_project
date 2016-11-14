@@ -4,108 +4,108 @@
 
 {% if request.user.is_authenticated %}
 <div class="pusher">
-
-
-<div class="ui grid">
-  <div class="five wide column">
-    <div class="ui people shape">
-      <div class="sides">
-        <div class="active side">
-          <div class="ui card">
-            <div class="image">
-              <img src="{{object.picture.url}}" alt="Profile Photo" />
-            </div>
-            <div class="content">
-              <div class="header">{{object.first_name}} {{object.last_name}}</div>
-              <div class="meta">
-                <a>Acquaintances</a>
+  <div class="ui grid">
+    <div class="five wide column">
+      <div class="ui people shape">
+        <div class="sides">
+          <div class="active side">
+            <div class="ui card">
+              <div class="image">
+                <img src="{{object.picture.url}}" alt="Profile Photo" />
               </div>
-              <div class="description">
-                BLAH
+              <div class="content">
+                <div class="header">{{object.first_name}} {{object.last_name}}</div>
+                <div class="meta">
+                  <a>Acquaintances</a>
+                </div>
+                <div class="description">
+                  BLAH
+                </div>
               </div>
-            </div>
-            <div class="extra content">
-              <span class="right floated">
-                {{object.get_year}}
-              </span>
-              <span>
-                <i class="user icon"></i>
-                {{object}} <br>
-                <a href="{% url 'profile_update_view' object.id %}"></i>Update Profile</a>
-              </span>
+              <div class="extra content">
+                <span class="right floated">
+                  {{object.get_year}}
+                </span>
+                <span>
+                  <i class="user icon"></i>
+                  {{object}} <br>
+                  <a href="{% url 'profile_update_view' object.id %}"></i>Update Profile</a>
+                </span>
 
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="six wide column">
-    <div class="ui raised very padded text container segment">
-    <h2 class="ui header">About Details</h2>
-    {% for thing in object.get_about %}
-    <div class="ui relaxed list">
-      <div class="item">
-        <div class="header">Biography</div>
-          {{thing.biography}}
-      </div>
-      <div class="item">
-        <div class="header">Birthday</div>
-          {{thing.birthdate}}
-      </div>
-      <div class="item">
-        <div class="header">Birth City</div>
-          {{thing.city_of_birth}}
-      </div>
-      <div class="item">
-        <div class="header">Birth State</div>
-          {{thing.state_of_birth}}
-      </div>
-      <div class="item">
-        <div class="header">Birth Country</div>
-          {{thing.country_of_birth}}
-      </div>
-      <div class="item">
-        <div class="header">Birth Gender</div>
-          {{thing.get_sex_at_birth_display}}
-      </div>
-      <div class="item">
-        <div class="header">Eye Color</div>
-          {{thing.get_eye_color_display}}
-      </div>
-      <div class="item">
-        <div class="header">Mother's First Name</div>
-          {{thing.mother_first_name}}
-      </div>
-      <div class="item">
-        <div class="header">Mother's Maiden Name</div>
-          {{thing.mother_maiden_name}}
-      </div>
-      <div class="item">
-        <div class="header">Mother's Last Name</div>
-          {{thing.mother_last_name}}
-      </div>
-      <div class="item">
-        <div class="header">Father's First Name</div>
-          {{thing.father_first_name}}
-      </div>
-      <div class="item">
-        <div class="header">Father's Last Name</div>
-          {{thing.father_last_name}}
-      </div>
-      <div class="item">
-        <div class="header">Birth Hospital</div>
-          {{thing.birth_hospital}}
-      </div>
-      <div class="item">
-        <div class="header">Searching For My:</div>
-          {{thing.get_searching_for_display}}
+    <div class="six wide column">
+      <div class="ui raised very padded text container segment">
+          <h2 class="ui left floated header">About Me Details</h2>
+          <h5 class="ui right floated header"><a href="{% url 'about_update_view' object.id %}"> Update About Me</a></h5><br>
+          <div class="ui divider"></div>
+            {% for thing in object.get_about %}
+            <div class="ui relaxed list">
+              <div class="item">
+                <div class="header">Birthday</div>
+                  {{thing.birthdate}}
+              </div>
+              <div class="item">
+                <div class="header">Birth City</div>
+                  {{thing.city_of_birth}}
+              </div>
+              <div class="item">
+                <div class="header">Birth State</div>
+                  {{thing.state_of_birth}}
+              </div>
+              <div class="item">
+                <div class="header">Birth Country</div>
+                  {{thing.country_of_birth}}
+              </div>
+              <div class="item">
+                <div class="header">Birth Gender</div>
+                  {{thing.get_sex_at_birth_display}}
+              </div>
+              <div class="item">
+                <div class="header">Eye Color</div>
+                  {{thing.get_eye_color_display}}
+              </div>
+              <div class="item">
+                <div class="header">Mother's First Name</div>
+                  {{thing.mother_first_name}}
+              </div>
+              <div class="item">
+                <div class="header">Mother's Maiden Name</div>
+                  {{thing.mother_maiden_name}}
+              </div>
+              <div class="item">
+                <div class="header">Mother's Last Name</div>
+                  {{thing.mother_last_name}}
+              </div>
+              <div class="item">
+                <div class="header">Father's First Name</div>
+                  {{thing.father_first_name}}
+              </div>
+              <div class="item">
+                <div class="header">Father's Last Name</div>
+                  {{thing.father_last_name}}
+              </div>
+              <div class="item">
+                <div class="header">Birth Hospital</div>
+                  {{thing.birth_hospital}}
+              </div>
+              <div class="item">
+                <div class="header">Searching For My:</div>
+                  {{thing.get_searching_for_display}}
+              </div>
+              <div class="item">
+                <div class="header">Biography</div>
+                  {{thing.biography}}
+              </div>
+            </div>
+          {% endfor %}
       </div>
     </div>
-    {% endfor %}
   </div>
-  </div>
-</div>
 </div>
 
 {% endif %}

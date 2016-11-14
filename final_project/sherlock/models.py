@@ -9,6 +9,7 @@ def create_user_profile(**kwargs):
     instance = kwargs.get('instance')
     if created:
         Profile.objects.create(user=instance)
+        About.objects.create(user=instance)
 
 
 class Profile(models.Model):
@@ -79,7 +80,7 @@ FAMILY = [
 class About(models.Model):
     user = models.OneToOneField('auth.User')
     biography = models.TextField(max_length=255)
-    birthdate = models.DateField()
+    birthdate = models.DateField(null=True)
     city_of_birth = models.CharField(max_length=255, blank=True)
     state_of_birth = models.CharField(max_length=150, blank=True)
     country_of_birth = models.CharField(max_length=255, blank=True)
