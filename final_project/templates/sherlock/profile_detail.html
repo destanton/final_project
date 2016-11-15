@@ -3,10 +3,9 @@
 {% block content %}
 
 {% if request.user.is_authenticated %}
-<div class="pusher">
-  <div class="ui grid">
-    <div class="five wide column">
-      <div class="ui people shape">
+<div class="ui container">
+    <div class="ui equal width grid">
+      <div class="column">
         <div class="sides">
           <div class="active side">
             <div class="ui card">
@@ -31,16 +30,14 @@
                   {{object}} <br>
                   <a href="{% url 'profile_update_view' object.id %}"></i>Update Profile</a>
                 </span>
-
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="six wide column">
+    <div class="column">
       <div class="ui raised very padded text container segment">
-          <h2 class="ui left floated header">About Me Details</h2>
+          <h2 class="ui left floated header">About Me</h2>
           <h5 class="ui right floated header"><a href="{% url 'about_update_view' object.id %}"> Update About Me</a></h5><br>
           <div class="ui divider"></div>
             {% for thing in object.get_about %}
@@ -105,7 +102,7 @@
           {% endfor %}
       </div>
     </div>
-  </div>
+</div>
 </div>
 
 {% endif %}

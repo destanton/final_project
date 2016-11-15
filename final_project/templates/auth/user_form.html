@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="pusher">
-  <form class="" action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" name="" value="Create User">
-  </form>
+<div class="ui container">
+  <div class="ui center aligned basic segment">
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" name="" value="Create User">
+    </form>
+  </div>
 </div>
+
+
 
 
 {% endblock %}
