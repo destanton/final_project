@@ -39,6 +39,7 @@
           <div class="item">
             Welcome, {{request.user|title}}
           </div>
+          <a class="item" href="{% url 'social:begin' 'twentythreeandme' %}">23andme</a>
           <a class="item" href="{% url 'profile_detail_view' %}">Profile</a>
           <a class="item" href="{% url 'logout' %}?next={% url 'index_view'%}">Logout</a>
           {% endif %}

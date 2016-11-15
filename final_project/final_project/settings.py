@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'social.apps.django_app.default',
     'sherlock'
 ]
 
@@ -53,10 +55,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'final_project.backends.Twentythreeandme',
+    'django.contrib.auth.backends.ModelBackend']
 
 WSGI_APPLICATION = 'final_project.wsgi.application'
 
@@ -108,6 +116,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+SOCIAL_AUTH_TWENTYTHREEANDME_KEY = ''
+SOCIAL_AUTH_TWENTYTHREEANDME_SECRET = ''
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = reverse_lazy("profile_detail_view")
 MEDIA_URL = '/media/'
