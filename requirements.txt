@@ -8,3 +8,4 @@ python-social-auth
 requests
 elasticsearch
 psycopg2
+whitenoise
