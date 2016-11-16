@@ -7,3 +7,4 @@ dj-database-url
 python-social-auth
 requests
 elasticsearch
+psycopg2
