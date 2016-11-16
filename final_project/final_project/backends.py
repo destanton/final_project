@@ -1,4 +1,5 @@
 from social.backends.oauth import BaseOAuth2
+from bs4 import BeautifulSoup
 
 
 class Twentythreeandme(BaseOAuth2):
@@ -23,16 +24,25 @@ class Twentythreeandme(BaseOAuth2):
                                  headers={'Authorization': 'Bearer {}'.format(access_token)})
         ancestry = self.get_json('https://api.23andme.com/1/ancestry/',
                                  headers={'Authorization': 'Bearer {}'.format(access_token)})
+        item = (ancestry[0]["ancestry"]["sub_populations"])
+        new_list = []
+        for counter, tag in enumerate(item):
+            if tag.get("sub_populations"):
+                new_list.append(tag.get("sub_populations"))
 
-        for counter, tag in enumerate(ancestry):
-            print(counter, tag)       
-        print(response)
-        print(ancestry)
+        for counter, tag in enumerate(new_list):
+            print(counter, tag)
         return response
+        return new_list
 
-    # def get_ancestry(self, access_token, *args, **kwargs):
-    #
-    #     response = self.get_json('https://api.23andme.com/1/ancestry/',
-    #                              headers={'Authorization': 'Bearer {}'.format(access_token)})
-    #     print(response)
-    #     return response
+
+
+
+# new_list = []
+# parser = BeautifulSoup(ancestry)
+# all_label_tags = parser.findAll('label')
+#
+# for counter, tag in enumerate(all_label_tags):
+#     if not tag.get("label"):
+#         new_list.append(tag.get("label"))
+#     print(new_list)
