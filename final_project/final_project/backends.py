@@ -21,4 +21,16 @@ class Twentythreeandme(BaseOAuth2):
     def user_data(self, access_token, *args, **kwargs):
         response = self.get_json('https://api.23andme.com/1/names/',
                                  headers={'Authorization': 'Bearer {}'.format(access_token)})
+        ancestry = self.get_json('https://api.23andme.com/1/ancestry/',
+                                 headers={'Authorization': 'Bearer {}'.format(access_token)})
+                                 
+        print(response)
+        print(ancestry)
         return response
+
+    # def get_ancestry(self, access_token, *args, **kwargs):
+    #
+    #     response = self.get_json('https://api.23andme.com/1/ancestry/',
+    #                              headers={'Authorization': 'Bearer {}'.format(access_token)})
+    #     print(response)
+    #     return response

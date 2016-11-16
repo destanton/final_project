@@ -3,8 +3,11 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.forms import UserCreationForm, User
 from django.urls import reverse_lazy, reverse
-
+from rest_framework.response import Response
+import requests
+from rest_framework.views import APIView
 from sherlock.models import Profile, About
+from final_project.backends import Twentythreeandme
 
 
 class UserCreateView(CreateView):
@@ -34,7 +37,6 @@ class ProfileUpdateView(UpdateView):
 
 
 class AboutUpdateView(UpdateView):
-    pass
     model = About
     success_url = reverse_lazy('profile_detail_view')
     fields = ('birthdate', 'city_of_birth', 'state_of_birth',
@@ -44,3 +46,13 @@ class AboutUpdateView(UpdateView):
 
     def get_object(self):
         return About.objects.get(user=self.request.user)
+
+
+# class AncestryAPIView(APIView):
+
+    # def get(self, access_token, *args, **kwargs):
+    #
+    #     r = requests.get('https://api.23andme.com/1/ancestry/',
+    #                      headers={'Authorization': 'Bearer {}'.format(access_token)})
+    #     print(r)
+    #     return Response(r.json())
