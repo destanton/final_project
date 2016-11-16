@@ -23,7 +23,9 @@ class Twentythreeandme(BaseOAuth2):
                                  headers={'Authorization': 'Bearer {}'.format(access_token)})
         ancestry = self.get_json('https://api.23andme.com/1/ancestry/',
                                  headers={'Authorization': 'Bearer {}'.format(access_token)})
-                                 
+
+        for counter, tag in enumerate(ancestry):
+            print(counter, tag)       
         print(response)
         print(ancestry)
         return response
