@@ -23,8 +23,10 @@ class IndexView(TemplateView):
 class ProfileDetailView(DetailView):
     model = Profile
 
-    def get_object(self):
-        return Profile.objects.get(user=self.request.user)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["profile"] = Profile.objects.filter(id=self.kwargs['pk'])
+        return context
 
 
 class ProfileUpdateView(UpdateView):
@@ -32,8 +34,8 @@ class ProfileUpdateView(UpdateView):
     success_url = reverse_lazy('profile_detail_view')
     fields = ('picture', 'first_name', 'middle_name', 'last_name', 'gender', )
 
-    def get_object(self):
-        return Profile.objects.get(user=self.request.user)
+    def get_queryset(self):
+        return Profile.objects.filter(user=self.request.user)
 
 
 class AboutUpdateView(UpdateView):
@@ -44,8 +46,8 @@ class AboutUpdateView(UpdateView):
               'mother_last_name', 'father_first_name', 'father_last_name', 'birth_hospital', 'searching_for',
               'biography',)
 
-    def get_object(self):
-        return About.objects.get(user=self.request.user)
+    def get_queryset(self):
+        return About.objects.filter(user=self.request.user)
 
 
 # class AncestryAPIView(APIView):

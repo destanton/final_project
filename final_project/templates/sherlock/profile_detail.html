@@ -28,7 +28,9 @@
                 <span>
                   <i class="user icon"></i>
                   {{object}} <br>
+                  {% if object.user == request.user %}
                   <a href="{% url 'profile_update_view' object.id %}"></i>Update Profile</a>
+                  {% endif %}
                 </span>
               </div>
             </div>
@@ -38,7 +40,9 @@
     <div class="column">
       <div class="ui raised very padded text container segment">
           <h2 class="ui left floated header">About Me</h2>
+          {% if object.user == request.user %}
           <h5 class="ui right floated header"><a href="{% url 'about_update_view' object.id %}"> Update About Me</a></h5><br>
+          {% endif %}
           <div class="ui divider"></div>
             {% for thing in object.get_about %}
             <div class="ui relaxed list">

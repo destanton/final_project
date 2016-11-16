@@ -130,6 +130,6 @@ USE_TZ = True
 SOCIAL_AUTH_TWENTYTHREEANDME_KEY = '0d3bfd3ae4a4e400de47b01568e84f14'
 SOCIAL_AUTH_TWENTYTHREEANDME_SECRET = 'd1e1b05842297415b9d9b8bf74e1f093'
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = reverse_lazy("profile_detail_view")
+LOGIN_REDIRECT_URL = reverse_lazy("index_view")
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
