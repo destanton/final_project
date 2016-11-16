@@ -1,0 +1,15 @@
+{{ object.user }}
+{{ object.biography }}
+{{ object.birthdate }}
+{{ object.city_of_birth }}
+{{ object.state_of_birth }}
+{{ object.country_of_birth }}
+{{ object.sex_at_birth }}
+{{ object.eye_color }}
+{{ object.mother_first_name }}
+{{ object.mother_maiden_name }}
+{{ object.mother_last_name }}
+{{ object.father_first_name }}
+{{ object.father_last_name }}
+{{ object.birth_hospital }}
+{{ object.searching_for }}

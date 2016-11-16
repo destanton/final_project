@@ -1,0 +1,6 @@
+{{ object.user }}
+{{ object.first_name }}
+{{ object.middle_name }}
+{{ object.last_name }}
+{{ object.gender }}
+{{ object.joined }}
