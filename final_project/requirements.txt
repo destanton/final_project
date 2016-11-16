@@ -1,0 +1,9 @@
+beautifulsoup4
+django
+djangorestframework
+django-haystack
+gunicorn
+dj-database-url
+python-social-auth
+requests
+elasticsearch

@@ -15,7 +15,7 @@ SECRET_KEY = 'yjvy!arfw!^py6&7beap8gg&oi4$xr$f=dpeblf!44q5$zsk%a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["aqueous-anchorage-41936.herokuapp.com", "localhost"]
 
 
 # Application definition
@@ -133,3 +133,4 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = reverse_lazy("index_view")
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
