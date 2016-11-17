@@ -17,3 +17,4 @@ urlpatterns = [
     url(r'^profile/update/(?P<pk>\d+)/$', ProfileUpdateView.as_view(), name='profile_update_view'),
     url(r'^about/update/(?P<pk>\d+)/$', AboutUpdateView.as_view(), name='about_update_view'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    
