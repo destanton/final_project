@@ -8,6 +8,10 @@ import requests
 from rest_framework.views import APIView
 from sherlock.models import Profile, About
 from final_project.backends import Twentythreeandme
+from haystack.generic_views import SearchView
+from haystack.query import SearchQuerySet
+from haystack.forms import SearchForm
+from haystack.utils import Highlighter
 
 
 class UserCreateView(CreateView):
@@ -62,3 +66,30 @@ class AboutUpdateView(UpdateView):
     #                      headers={'Authorization': 'Bearer {}'.format(access_token)})
     #     print(r)
     #     return Response(r.json())
+
+# class AboutSearchView(SearchView):
+#     form_class = SearchForm
+#     success_url = reverse_lazy("about_search_view")
+#
+#     def get_queryset(self):
+#         queryset = super(AboutSearchView, self).get_queryset()
+#         if not request.GET.get('q'):
+#             sqs = SearchQuerySet().auto_query('')
+#
+# def testpage(request):
+#     context = {'suggestion': SearchQuerySet().spelling_suggestion("swet") }
+#     return render(request, 'search.html', context)
+
+class CustomSearchView(SearchView):
+    """
+    Custom SearchView to fix spelling suggestions.
+    """
+    def extra_context(self):
+        context = {'suggestion': None}
+
+        if self.results.query.backend.include_spelling:
+            suggestion = self.form.get_suggestion()
+            if suggestion != self.query:
+                context['suggestion'] = suggestion
+
+        return context
