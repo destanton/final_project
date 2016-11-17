@@ -31,11 +31,14 @@ class ProfileDetailView(DetailView):
 
 class ProfileUpdateView(UpdateView):
     model = Profile
-    success_url = reverse_lazy('profile_detail_view')
+    # success_url = reverse_lazy('profile_detail_view')
     fields = ('picture', 'first_name', 'middle_name', 'last_name', 'gender', )
 
     def get_queryset(self):
         return Profile.objects.filter(user=self.request.user)
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('profile_detail_view', args=[int(self.kwargs['pk'])])
 
 
 class AboutUpdateView(UpdateView):
@@ -49,7 +52,8 @@ class AboutUpdateView(UpdateView):
     def get_queryset(self):
         return About.objects.filter(user=self.request.user)
 
-
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('profile_detail_view', args=[int(self.kwargs['pk'])])
 # class AncestryAPIView(APIView):
 
     # def get(self, access_token, *args, **kwargs):
