@@ -9,12 +9,13 @@ class ProfileIndex(indexes.SearchIndex, indexes.Indexable):
     last_name = indexes.CharField(model_attr="last_name")
     gender = indexes.CharField(model_attr="gender")
     joined = indexes.CharField(model_attr="joined")
-    suggestions = indexes.FacetCharField()
 
-    def prepare(self, obj):
-        prepared_data = super(ProfileIndex, self).prepare(obj)
-        prepared_data["suggestions"] = prepared_data["text"]
-        return prepared_data
+    # suggestions = indexes.FacetCharField()
+    #
+    # def prepare(self, obj):
+    #     prepared_data = super(ProfileIndex, self).prepare(obj)
+    #     prepared_data["suggestions"] = prepared_data["text"]
+    #     return prepared_data
 
     def get_model(self):
         return Profile
@@ -37,7 +38,7 @@ class AboutIndex(indexes.SearchIndex, indexes.Indexable):
     father_last_name = indexes.CharField(model_attr="father_last_name")
     birth_hospital = indexes.CharField(model_attr="birth_hospital")
     searching_for = indexes.CharField(model_attr="searching_for")
-    suggestions = indexes.FacetCharField()
+    user_auto = indexes.EdgeNgramField(model_attr="user")
 
     def prepare_sex_at_birth(self, obj):
         return obj.get_sex_at_birth_display()
@@ -48,10 +49,10 @@ class AboutIndex(indexes.SearchIndex, indexes.Indexable):
     def prepare_searching_for(self, obj):
         return obj.get_searching_for_display()
 
-    def prepare(self, obj):
-        prepared_data = super(AboutIndex, self).prepare(obj)
-        prepared_data["suggestions"] = prepared_data["text"]
-        return prepared_data
+    # def prepare(self, obj):
+    #     prepared_data = super(AboutIndex, self).prepare(obj)
+    #     prepared_data["suggestions"] = prepared_data["text"]
+    #     return prepared_data
 
     def get_model(self):
         return About
