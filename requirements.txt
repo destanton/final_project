@@ -1,5 +1,5 @@
 beautifulsoup4
-django
+django==1.10.2
 djangorestframework
 django-haystack
 gunicorn
@@ -9,4 +9,3 @@ requests
 elasticsearch
 psycopg2
 whitenoise
-django-messages
