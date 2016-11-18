@@ -24,7 +24,7 @@ class AboutIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     user = indexes.CharField(model_attr="user")
     biography = indexes.CharField(model_attr="biography")
-    birthdate = indexes.CharField(model_attr="birthdate")
+    birthdate = indexes.CharField(model_attr="birthdate", null=True)
     city_of_birth = indexes.CharField(model_attr="city_of_birth")
     state_of_birth = indexes.CharField(model_attr="state_of_birth")
     country_of_birth = indexes.CharField(model_attr="country_of_birth")
