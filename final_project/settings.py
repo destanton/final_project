@@ -29,16 +29,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'social.apps.django_app.default',
+    'django_messages',
+    'django.contrib.sites',
     'haystack',
     'sherlock'
 ]
-
+SITE_ID = 1
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
         'URL': 'localhost:9200',
         'INDEX_NAME': 'haystack',
-        'INCLUDE_SPELLING':True,
+        'INCLUDE_SPELLING': True,
     },
 }
 

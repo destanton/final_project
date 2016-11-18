@@ -24,7 +24,15 @@
               <div class="extra content">
                 <span class="right floated">
                   {{object.get_year}}
+                  <br>
+                  <a href="{% url 'messages_inbox' %}"><i class="large mail outline icon"></i></a>
+                  {% load inbox %}
+                  {% inbox_count %}
+                
                 </span>
+
+
+
                 <span>
                   <i class="user icon"></i>
                   {{object}} <br>
