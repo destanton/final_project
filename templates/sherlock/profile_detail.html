@@ -25,14 +25,12 @@
                 <span class="right floated">
                   {{object.get_year}}
                   <br>
+                  {% if object.user == request.user %}
                   <a href="{% url 'messages_inbox' %}"><i class="large mail outline icon"></i></a>
-                  {% load inbox %}
-                  {% inbox_count %}
-
+                    {% load inbox %}
+                    {% inbox_count %}
+                  {% endif %}
                 </span>
-
-
-
                 <span>
                   <i class="user icon"></i>
                   {{object}} <br>
