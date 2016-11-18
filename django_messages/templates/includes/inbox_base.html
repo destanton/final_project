@@ -1,0 +1,7 @@
+{% load i18n %}
+
+
+    <a class="active red item" href="{% url 'profile_detail_view' request.user.id %} "><i class="arrow left icon"></i>Back</a>
+    <a class="active teal item" href="{% url 'messages_outbox' %} "><i class="send outline icon"></i></a>
+    <a class="active teal item" href="{% url 'messages_compose' %} "><i class="write icon"></i></a>
+    <a class="active teal item" href="{% url 'messages_trash' %} "><i class="trash outline icon"></i></a>

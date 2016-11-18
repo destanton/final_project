@@ -1,7 +1,10 @@
-{% extends "django_messages/base.html" %}
+{% extends "base.html" %}
 {% load i18n %}
 
 {% block content %}
+<div class="ui menu">
+  {% include "includes/inbox_base.html" %}
+</div>
 <h1>{% trans "View Message" %}</h1>
 <dl class="message-headers">
     <dt>{% trans "Subject" %}</dt>

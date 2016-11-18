@@ -28,7 +28,7 @@
                   {% if object.user == request.user %}
                   <a href="{% url 'messages_inbox' %}"><i class="large mail outline icon"></i></a>
                     {% load inbox %}
-                    {% inbox_count %}
+                    <a class="ui teal circular label">{% inbox_count %}</a>
                   {% endif %}
                 </span>
                 <span>
