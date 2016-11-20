@@ -10,7 +10,7 @@
     .masthead {
       background-image: url(https://s3.amazonaws.com/tdh-des/Embrace.jpg) !important;
       background-size: cover !important;
-      min-height: 1000px;
+      min-height: 800px;
 }
     .ui.menu {
       margin-top: 0em;
@@ -26,6 +26,14 @@
     .ui-white-link{
       color: white;
     }
+    .footer-page {
+  margin-top: 2em;
+  padding: 2.0rem 1.5rem;
+  background: #F5F6F7;
+  color: purple;
+  font-size: 0.85em;
+  text-align: center;
+}
     </style>
   </head>
     <body>
@@ -87,4 +95,22 @@
       {% block javascript %}
       {% endblock %}
     </body>
+    <footer>
+      <div class="ui footer-page">
+        <div class="ui container">
+            <div class="three wide column">
+              <h4 class="ui header">About</h4>
+              <a href="#">Contact Us</a><br>
+              <a href="#">Tommy and Danielle</a>
+              <p>
+                <a href="https://github.com/tdhuynh/final_project">
+                <button class="ui circular icon button">
+    <i class="github icon"></i>
+  </button></a>
+              </p>
+
+          </div>
+        </div>
+      </div>
+    </footer>
 </html>
