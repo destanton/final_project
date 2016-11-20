@@ -2,7 +2,8 @@
 {% load i18n %}
 
 {% block content %}
-<div class="ui menu">
+<div class="ui container">
+<div class="ui fluid four item menu">
   {% include "includes/inbox_base.html" %}
 </div>
 <h1>{% trans "View Message" %}</h1>
@@ -16,12 +17,15 @@
     <dt>{% trans "Recipient" %}</dt>
     <dd>{{ message.recipient }}</dd>
 </dl>
-{{ message.body|linebreaksbr }}<br /><br />
+<div class="ui message">
 
+
+{{ message.body|linebreaksbr }}<br /><br />
+</div>
 {% ifequal message.recipient.pk user.pk %}
-<a href="{% url 'messages_reply' message.id %}">{% trans "Reply" %}</a>
+<a href="{% url 'messages_reply' message.id %}"><i class="reply icon"></i>Reply</a>
 {% endifequal %}
-<a href="{% url 'messages_delete' message.id %}">{% trans "Delete" %}</a>
+<a href="{% url 'messages_delete' message.id %}"><i class="remove icon"></i>Delete</a>
 
 {% comment %}Example reply_form integration
 {% if reply_form %}
@@ -35,4 +39,5 @@
 </form>
 {% endif %}
 {% endcomment %}
+</div>
 {% endblock %}
