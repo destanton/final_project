@@ -47,7 +47,7 @@
       <div class="ui raised very padded text container segment">
           <h2 class="ui left floated header">About Me</h2>
           {% if object.user == request.user %}
-          <h5 class="ui right floated header"><a href="{% url 'about_update_view' object.user.profile.id %}"><i class="extra large edit icon"></i></a></h5><br>
+          <h5 class="ui right floated header"><a href="{% url 'about_update_view' object.user.profile.id %}"><i class="extra large edit icon"></i></a></h5>
           {% endif %}
           <br>
           <div class="ui divider"></div>
