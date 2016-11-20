@@ -1,6 +1,7 @@
 from haystack import indexes
 from sherlock.models import Profile, About
 
+
 class ProfileIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     user = indexes.CharField(model_attr="user")
@@ -20,11 +21,13 @@ class ProfileIndex(indexes.SearchIndex, indexes.Indexable):
     def get_model(self):
         return Profile
 
+    def index_queryset(self):
+        return Profile.objects.all()
 
 class AboutIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     user = indexes.CharField(model_attr="user")
-    biography = indexes.CharField(model_attr="biography")
+    # biography = indexes.CharField(model_attr="biography")
     birthdate = indexes.CharField(model_attr="birthdate", null=True)
     city_of_birth = indexes.CharField(model_attr="city_of_birth")
     state_of_birth = indexes.CharField(model_attr="state_of_birth")
@@ -38,7 +41,7 @@ class AboutIndex(indexes.SearchIndex, indexes.Indexable):
     father_last_name = indexes.CharField(model_attr="father_last_name")
     birth_hospital = indexes.CharField(model_attr="birth_hospital")
     searching_for = indexes.CharField(model_attr="searching_for")
-    user_auto = indexes.EdgeNgramField(model_attr="user")
+    biography_auto = indexes.EdgeNgramField(model_attr="biography")
 
     def prepare_sex_at_birth(self, obj):
         return obj.get_sex_at_birth_display()
@@ -56,3 +59,6 @@ class AboutIndex(indexes.SearchIndex, indexes.Indexable):
 
     def get_model(self):
         return About
+
+    def get_queryset(self):
+        return About.objects.all()
