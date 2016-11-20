@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="ui container">
-<div class="ui fluid four item menu">
+
   {% include "includes/inbox_base.html" %}
 
 {% blocktrans with recipient=message.recipient sender=message.sender %}Hello {{ recipient }},
@@ -14,5 +14,5 @@ the following contents:{% endblocktrans %}
 {% blocktrans %}Sent from {{ site_url }}{% endblocktrans %}
 {% trans "Inbox" %}: {{ site_url }}{% url 'messages_inbox' %}
 {% trans "Reply" %}: {{ site_url }}{% url 'messages_reply' message.pk %}
-</div>
+
 </div>

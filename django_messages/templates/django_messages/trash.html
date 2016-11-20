@@ -3,9 +3,9 @@
 
 {% block content %}
 <div class="ui container">
-  <div class="ui fluid four item menu">
+
     {% include "includes/inbox_base.html" %}
-  </div>
+
     <h1>{% trans "Deleted Messages" %}</h1>
     {% if message_list %}
     <table class="ui celled table">

@@ -23,6 +23,9 @@
     .ui.header{
       color: black;
     }
+    .ui-white-link{
+      color: white;
+    }
     </style>
   </head>
     <body>
@@ -40,7 +43,11 @@
           </div>
           <a class="item" href="{% url 'index_view' %}"><i class="home icon"></i>Home</a>
           <a class="item" href="{% url 'social:begin' 'twentythreeandme' %}">Connect with 23andme</a>
-          <a class="item" href="{% url 'profile_detail_view' request.user.profile.id %}">Profile</a>
+          {% load inbox %}
+          <a class="item" href="{% url 'profile_detail_view' request.user.profile.id %}">Profile
+             &nbsp;<i class="mail icon"></i>{% inbox_count %}
+          </a>
+
           <a class="item" href="{% url 'logout' %}?next={% url 'index_view'%}">Logout</a>
           {% endif %}
           <div class="right menu">

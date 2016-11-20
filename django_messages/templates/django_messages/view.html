@@ -3,30 +3,42 @@
 
 {% block content %}
 <div class="ui container">
-<div class="ui fluid four item menu">
   {% include "includes/inbox_base.html" %}
-</div>
 <h1>{% trans "View Message" %}</h1>
-<dl class="message-headers">
-    <dt>{% trans "Subject" %}</dt>
-    <dd><strong>{{ message.subject }}</strong></dd>
-    <dt>{% trans "Sender" %}</dt>
-    <dd>{{ message.sender }}</dd>
-    <dt>{% trans "Date" %} </dt>
-    <dd>{{ message.sent_at|date:_("DATETIME_FORMAT")}}</dd>
-    <dt>{% trans "Recipient" %}</dt>
-    <dd>{{ message.recipient }}</dd>
-</dl>
-<div class="ui message">
-
-
+<table class="ui very basic collapsing celled table">
+<tbody>
+    <tr>
+      <td>{% trans "Subject" %}</td>
+      <td><strong>{{ message.subject }}</strong></td>
+    </tr>
+    <tr>
+      <td>{% trans "Sender" %}</td>
+      <td>{{ message.sender }}</td>
+    </tr>
+    <tr>
+      <td>{% trans "Date" %} </td>
+      <td>{{ message.sent_at|date:_("DATETIME_FORMAT")}}</td>
+    </tr>
+    <tr>
+      <td>{% trans "Recipient" %}</td>
+      <td>{{ message.recipient }}</td>
+    </tr>
+    </tbody>
+</table>
+<div class="ui segment">
 {{ message.body|linebreaksbr }}<br /><br />
 </div>
-{% ifequal message.recipient.pk user.pk %}
-<a href="{% url 'messages_reply' message.id %}"><i class="reply icon"></i>Reply</a>
-{% endifequal %}
-<a href="{% url 'messages_delete' message.id %}"><i class="remove icon"></i>Delete</a>
+<div class="ui buttons">
 
+
+{% ifequal message.recipient.pk user.pk %}
+<button class="ui positive button">
+<a class="ui-white-link" href="{% url 'messages_reply' message.id %}"><i class="reply icon"></i>Reply</a></button>
+{% endifequal %}
+<div class="or"></div>
+<button class="ui red button">
+<a class="ui-white-link" href="{% url 'messages_delete' message.id %}"><i class="remove icon"></i>Delete</a></button>
+</div>
 {% comment %}Example reply_form integration
 {% if reply_form %}
 <h1>{% trans "Compose reply"%}</h1>
