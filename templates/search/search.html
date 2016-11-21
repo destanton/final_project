@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load highlight %}
 
 
 {% block content %}
@@ -18,29 +17,58 @@
 
         {% if query %}
             <h3>Results</h3>
-            {% for result in page.object_list %}
-              {% highlight result.object.user with request.GET.q %}
-                <p>
-                    <a href="{% url 'profile_detail_view' result.object.user.id %}">{{ result.object.user }}</a>
-                </p>
-                
-                <p>
-                  {{ result.object.user.about.biography }}
-                </p>
-            {% empty %}
-                  {{ suggestion }}
-                <p>No results found.</p>
-            {% endfor %}
 
-            {% if page.has_previous or page.has_next %}
-                <div>
-                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
-                    |
-                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
-                </div>
-            {% endif %}
-        {% else %}
-          Search All or specify field of "Search In"
-        {% endif %}
+  <table class="ui celled padded table">
+  <thead>
+    <tr>
+    <th class="single line">Username</th>
+    <th>Person</th>
+    <th>Birthdate</th>
+    <th>Location</th>
+    <th class="single line">Searching For</th>
+    <th>Biography</th>
+  </tr>
+</thead>
+  <tbody>
+    {% for result in page.object_list %}
+    <tr>
+      <td>
+        <h2 class="single line"><a href="{% url 'profile_detail_view' result.object.user.id %}">{{ result.object.user }}</a></h2>
+      </td>
+      <td class="single line">
+        {{ result.object.user.profile.first_name }} {{ result.object.user.profile.last_name }}
+      </td>
+      <td class="single line">
+        {{ result.object.user.about.birthdate }}
+      </td>
+      <td>
+        {{ result.object.user.about.city_of_birth }}
+      </td>
+      <td>
+        {{ result.object.user.about.searching_for }}
+      </td>
+      <td>
+        {{ result.object.user.about.biography }}
+      </td>
+    </tr>
+    {% empty %}
+          {{ suggestion }}
+        <p>No results found.</p>
+    {% endfor %}
+
+    {% if page.has_previous or page.has_next %}
+        <div>
+            {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+            |
+            {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+        </div>
+    {% endif %}
+{% else %}
+  Search All or specify field of "Search In"
+{% endif %}
+  </tbody>
+</table>
+
+
     </form>
 {% endblock %}

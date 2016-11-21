@@ -8,9 +8,8 @@ import requests
 from rest_framework.views import APIView
 from sherlock.models import Profile, About, Relative
 from final_project.backends import Twentythreeandme
-from haystack.generic_views import SearchView
+from haystack.generic_views import FacetedSearchView
 from haystack.query import SearchQuerySet
-from haystack.forms import HighlightedModelSearchForm
 from haystack.utils import Highlighter
 from django.core.paginator import InvalidPage, Paginator
 from django.conf import settings
