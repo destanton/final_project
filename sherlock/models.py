@@ -77,3 +77,14 @@ class About(models.Model):
 
     # def __str__(self):
     #     return self.biography
+
+class Relative(models.Model):
+    user = models.OneToOneField('auth.User')
+    first_name = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=50, blank=True)
+    relationship = models.CharField(max_length=30, blank=True)
+    birth_year = models.IntegerField(null=True)
+    unique_id = models.CharField(max_length=100, blank=True)
+    location = models.TextField(blank=True)
+    family_surnames = models.TextField(blank=True)
+    

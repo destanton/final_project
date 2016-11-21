@@ -41,7 +41,6 @@ class AboutIndex(indexes.SearchIndex, indexes.Indexable):
     father_last_name = indexes.CharField(model_attr="father_last_name")
     birth_hospital = indexes.CharField(model_attr="birth_hospital")
     searching_for = indexes.CharField(model_attr="searching_for")
-    biography_auto = indexes.EdgeNgramField(model_attr="biography")
 
     def prepare_sex_at_birth(self, obj):
         return obj.get_sex_at_birth_display()
