@@ -7,7 +7,7 @@
     <div class="ui grid">
       <div class="four wide column">
 
-        <div class="sides">
+        <div class="ui-sides">
           <div class="active side">
             <div class="ui card">
               <div class="image">
@@ -46,8 +46,8 @@
 
       </div>
 
-    <div class="twelve wide column">
-      <div class="about-ui raised very padded text container segment">
+    <div class="eight wide column">
+      <div class="ui- raised very padded text container segment">
           <h2 class="ui left floated header">About Me</h2>
           {% if object.user == request.user %}
           <h5 class="ui right floated header"><a href="{% url 'about_update_view' object.user.profile.id %}"><i class="extra large edit icon"></i></a></h5>
@@ -108,23 +108,39 @@
                 <div class="header">Searching For My:</div>
                   {{thing.get_searching_for_display}}
               </div>
-              <div class="item">
-                <div class="header">Biography</div>
-                  {{thing.biography}}
               </div>
-            </div>
+              </div>
+              </div>
+              <div class="four wide column">
+                <div class="ui-- raised very padded text container segment">
+
+                    <h2 class="ui center aligned icon header">
+                      <i class="user icon"></i>
+                      Biography</h2>
+                    <div class="ui divider"></div>
+                      <p>
+                        {{thing.biography}}
+                      </p>
+
+
+                </div>
+              </div>
+
+
           {% endfor %}
-      </div>
-    </div>
+
+
 </div>
 
-
+<button class="ui right floated button" name="button">
+  <a class="item" href="{% url 'social:begin' 'twentythreeandme' %}">Sync with 23andme</a>
+</button>
   <div class="ui grid">
     <div class="column">
-      <div class="ui compact table">
+      <div class="ui compact teal table">
       <table>
       <thead>
-        <tr>
+        <tr class="center aligned">
           <th class="highlighted">First Name</th>
           <th>Last Name</th>
           <th>Relationship</th>
@@ -133,7 +149,7 @@
           <th>Family Surnames</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="center aligned">
         {% for thing in object.get_relative %}
         <tr>
             <td>

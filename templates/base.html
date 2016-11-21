@@ -21,7 +21,6 @@
             Welcome, {{request.user|title}}
           </div>
           <a class="item" href="{% url 'index_view' %}"><i class="home icon"></i>Home</a>
-          <a class="item" href="{% url 'social:begin' 'twentythreeandme' %}">Sync with 23andme</a>
           {% load inbox %}
           <a class="item" href="{% url 'profile_detail_view' request.user.profile.id %}">Profile
              &nbsp;<i class="mail icon"></i>{% inbox_count %}

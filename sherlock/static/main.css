@@ -26,23 +26,49 @@ font-size: 0.85em;
 text-align: center;
 }
 .ui-p-container{
-  margin-left: 125px;
-  margin-right: 125px;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 
 .profile-eight{
   height: 556px;
 }
 
-.about-{
-  margin-top: 10px;
-  margin-left: 25px;
-  margin-right: : 25px;
-  margin-bottom: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
+.ui- {
+  margin-left: -10px;
+  margin-right: 70px;
+  margin-bottom: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  max-width: 1000px;
+  max-height: 850px;
+  box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
+
 }
 
+.ui-- {
+  position: relative;
+  min-height: 1em;
+  margin-left: -50px;
+  margin-right: 0px;
+  background: ;
+  height: 540px;
+  padding: 1em 1.5em;
+  line-height: 1.4285em;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
+  transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
+  border-radius: 0.28571429rem;
+  box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
+  font-size: 1.25em;
+}
 .highlighted{
   background-color: yellow;
+}
+
+.ui-sides{
+  width: 300px;
+  margin-right: 0px;
 }
