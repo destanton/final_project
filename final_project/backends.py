@@ -1,5 +1,6 @@
 from social.backends.oauth import BaseOAuth2
 from bs4 import BeautifulSoup
+from sherlock.models import Relative
 
 
 class Twentythreeandme(BaseOAuth2):
@@ -19,11 +20,33 @@ class Twentythreeandme(BaseOAuth2):
                 'first_name': first_name,
                 'last_name': last_name}
 
+    # user = self.request.user
+
     def user_data(self, access_token, *args, **kwargs):
         # response = self.get_json('https://api.23andme.com/1/names/',
         #                          headers={'Authorization': 'Bearer {}'.format(access_token)})
         family = self.get_json('https://api.23andme.com/1/relatives/',
                                  headers={'Authorization': 'Bearer {}'.format(access_token)})
+
+        item = (family[0]["relatives"])
+        # relative = Relative.objects.create(user=self.request.user)
+        x = kwargs['user']
+        print(args, kwargs)
+        # print(x.id)
+        for name in item:
+            first = name.get("first_name")
+            last = name.get("last_name")
+            relationship = name.get("relationship")
+            birthyear = name.get("birth_year")
+            unique_id = name.get("match_id")
+            location = name.get("family_locations")
+            surname = name.get("family_surnames")
+            Relative.objects.create(user=x, first_name=first, last_name=last, relationship=relationship,
+                                birth_year=birthyear, unique_id=unique_id, location=location,
+                                family_surnames=surname)
+        print(last, first, relationship, birthyear, unique_id, location, surname)
+
+
         # item = (ancestry[0]["ancestry"]["sub_populations"])
         # new_list = []
         # for counter, tag in enumerate(item):
@@ -33,16 +56,3 @@ class Twentythreeandme(BaseOAuth2):
         # for counter, tag in enumerate(new_list):
         #     print(counter, tag)
         # return response
-
-        item = (family[0]["relatives"])
-
-        for name in item:
-            first = name.get("first_name")
-            last = name.get("last_name")
-            relationship = name.get("relationship")
-            birthyear = name.get("birth_year")
-            unique_id = name.get("match_id")
-            location = name.get("family_locations")
-            surname = name.get("family_surnames")
-            
-            print(last, first, relationship, birthyear, unique_id, location, surname)
