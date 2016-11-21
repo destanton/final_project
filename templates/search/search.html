@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load highlight %}
 
+
 {% block content %}
     <h2>Search</h2>
 
@@ -18,10 +19,11 @@
         {% if query %}
             <h3>Results</h3>
             {% for result in page.object_list %}
+              {% highlight result.object.user with request.GET.q %}
                 <p>
                     <a href="{% url 'profile_detail_view' result.object.user.id %}">{{ result.object.user }}</a>
-                    {% highlight result.object.user with request.GET.q %}
                 </p>
+                
                 <p>
                   {{ result.object.user.about.biography }}
                 </p>

@@ -1,5 +1,7 @@
 from haystack import indexes
 from sherlock.models import Profile, About
+from haystack.utils import Highlighter
+
 
 
 class ProfileIndex(indexes.SearchIndex, indexes.Indexable):
