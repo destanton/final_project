@@ -20,13 +20,13 @@
             {% for result in page.object_list %}
                 <p>
                     <a href="{% url 'profile_detail_view' result.object.user.id %}">{{ result.object.user }}</a>
+                    {% highlight result.object.user with request.GET.q %}
                 </p>
                 <p>
-
                   {{ result.object.user.about.biography }}
-
                 </p>
             {% empty %}
+                  {{ suggestion }}
                 <p>No results found.</p>
             {% endfor %}
 
