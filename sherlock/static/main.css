@@ -25,3 +25,24 @@ color: purple;
 font-size: 0.85em;
 text-align: center;
 }
+.ui-p-container{
+  margin-left: 125px;
+  margin-right: 125px;
+}
+
+.profile-eight{
+  height: 556px;
+}
+
+.about-{
+  margin-top: 10px;
+  margin-left: 25px;
+  margin-right: : 25px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.highlighted{
+  background-color: yellow;
+}

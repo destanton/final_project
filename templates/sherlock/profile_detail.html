@@ -3,11 +3,9 @@
 {% block content %}
 
 {% if request.user.is_authenticated %}
-<div class="ui container">
-    <div class="ui two column grid">
-      <div class="column">
-        <div class="row">
-
+<div class="ui-p-container">
+    <div class="ui grid">
+      <div class="four wide column">
 
         <div class="sides">
           <div class="active side">
@@ -45,11 +43,11 @@
             </div>
           </div>
         </div>
-      </div>
+
       </div>
 
-    <div class="column">
-      <div class="ui raised very padded text container segment">
+    <div class="twelve wide column">
+      <div class="about-ui raised very padded text container segment">
           <h2 class="ui left floated header">About Me</h2>
           {% if object.user == request.user %}
           <h5 class="ui right floated header"><a href="{% url 'about_update_view' object.user.profile.id %}"><i class="extra large edit icon"></i></a></h5>
@@ -118,19 +116,19 @@
           {% endfor %}
       </div>
     </div>
-  </div>
-  </div>
-  <div class="ui container">
-<div class="column">
-      <div class="ui very basic collapsing celled table">
+</div>
+
+
+  <div class="ui grid">
+    <div class="column">
+      <div class="ui compact table">
       <table>
       <thead>
         <tr>
-          <th>First Name</th>
+          <th class="highlighted">First Name</th>
           <th>Last Name</th>
           <th>Relationship</th>
           <th>Birth Year</th>
-          <th>23andMe Unique ID</th>
           <th>Location</th>
           <th>Family Surnames</th>
         </tr>
@@ -151,9 +149,6 @@
               {{thing.birth_year}}
             </td>
             <td>
-              {{thing.unique_id}}
-            </td>
-            <td>
               {{thing.location|cut:"]"|cut:"["|cut:"'"}}
             </td>
             <td>
@@ -166,15 +161,13 @@
       </div>
     </div>
     </div>
+</div>
 {% endif %}
-
 {% endblock %}
-
 {% block javascript %}
 <script type="text/javascript">
 $('.ui.dropdown')
 .dropdown()
 ;
-
 </script>
 {% endblock %}
