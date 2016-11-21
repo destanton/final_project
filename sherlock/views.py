@@ -10,7 +10,6 @@ from sherlock.models import Profile, About
 from final_project.backends import Twentythreeandme
 from haystack.generic_views import SearchView
 from haystack.query import SearchQuerySet
-# from sherlock.forms import AutoModelSearchForm
 from haystack.forms import HighlightedModelSearchForm
 from haystack.utils import Highlighter
 from django.core.paginator import InvalidPage, Paginator
@@ -70,11 +69,11 @@ class AboutUpdateView(UpdateView):
     #                      headers={'Authorization': 'Bearer {}'.format(access_token)})
     #     print(r)
     #     return Response(r.json())
-
-class AboutSearchView(SearchView):
-    form_class = HighlightedModelSearchForm
-
-    def get_queryset(self):
-        queryset = super(AboutSearchView, self).get_queryset()
-        # queryset = queryset.filter(biography_auto__contains=self.request.GET.get('q'))
-        return queryset
+#
+# class AboutSearchView(SearchView):
+#     form_class = HighlightedModelSearchForm
+#
+#     def get_queryset(self):
+#         queryset = super(AboutSearchView, self).get_queryset()
+#         # queryset = queryset.filter(biography_auto__contains=self.request.GET.get('q'))
+#         return queryset

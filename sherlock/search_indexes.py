@@ -21,7 +21,7 @@ class ProfileIndex(indexes.SearchIndex, indexes.Indexable):
     def get_model(self):
         return Profile
 
-    def index_queryset(self):
+    def index_queryset(self, using=None):
         return Profile.objects.all()
 
 class AboutIndex(indexes.SearchIndex, indexes.Indexable):
@@ -60,5 +60,5 @@ class AboutIndex(indexes.SearchIndex, indexes.Indexable):
     def get_model(self):
         return About
 
-    def get_queryset(self):
+    def index_queryset(self, using=None):
         return About.objects.all()
