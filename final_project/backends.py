@@ -20,29 +20,29 @@ class Twentythreeandme(BaseOAuth2):
                 'last_name': last_name}
 
     def user_data(self, access_token, *args, **kwargs):
-        response = self.get_json('https://api.23andme.com/1/names/',
+        # response = self.get_json('https://api.23andme.com/1/names/',
+        #                          headers={'Authorization': 'Bearer {}'.format(access_token)})
+        family = self.get_json('https://api.23andme.com/1/relatives/',
                                  headers={'Authorization': 'Bearer {}'.format(access_token)})
-        ancestry = self.get_json('https://api.23andme.com/1/ancestry/',
-                                 headers={'Authorization': 'Bearer {}'.format(access_token)})
-        item = (ancestry[0]["ancestry"]["sub_populations"])
-        new_list = []
-        for counter, tag in enumerate(item):
-            if tag.get("sub_populations"):
-                new_list.append(tag.get("sub_populations"))
+        # item = (ancestry[0]["ancestry"]["sub_populations"])
+        # new_list = []
+        # for counter, tag in enumerate(item):
+        #     if tag.get("sub_populations"):
+        #         new_list.append(tag.get("sub_populations"))
+        #
+        # for counter, tag in enumerate(new_list):
+        #     print(counter, tag)
+        # return response
 
-        for counter, tag in enumerate(new_list):
-            print(counter, tag)
-        return response
-        return new_list
+        item = (family[0]["relatives"])
 
-
-
-
-# new_list = []
-# parser = BeautifulSoup(ancestry)
-# all_label_tags = parser.findAll('label')
-#
-# for counter, tag in enumerate(all_label_tags):
-#     if not tag.get("label"):
-#         new_list.append(tag.get("label"))
-#     print(new_list)
+        for name in item:
+            first = name.get("first_name")
+            last = name.get("last_name")
+            relationship = name.get("relationship")
+            birthyear = name.get("birth_year")
+            unique_id = name.get("match_id")
+            location = name.get("family_locations")
+            surname = name.get("family_surnames")
+            
+            print(last, first, relationship, birthyear, unique_id, location, surname)

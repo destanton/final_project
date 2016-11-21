@@ -135,8 +135,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-SOCIAL_AUTH_TWENTYTHREEANDME_KEY = os.getenv('social_auth_twentythreeandme_key')
-SOCIAL_AUTH_TWENTYTHREEANDME_SECRET = os.getenv('social_auth_twentythreeandme_secret')
+SOCIAL_AUTH_TWENTYTHREEANDME_KEY = ""
+SOCIAL_AUTH_TWENTYTHREEANDME_SECRET = ""
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = reverse_lazy("index_view")
 MEDIA_URL = '/media/'
