@@ -38,6 +38,10 @@ class Profile(models.Model):
     def get_about(self):
         return About.objects.filter(user=self.user)
 
+    @property
+    def get_relative(self):
+        return Relative.objects.filter(user=self.user)
+
 
 class About(models.Model):
     GENDER = [
@@ -78,6 +82,7 @@ class About(models.Model):
     # def __str__(self):
     #     return self.biography
 
+
 class Relative(models.Model):
     user = models.ForeignKey('auth.User')
     first_name = models.CharField(max_length=50, blank=True)
@@ -87,3 +92,6 @@ class Relative(models.Model):
     unique_id = models.CharField(max_length=100, blank=True)
     location = models.TextField(blank=True)
     family_surnames = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.user.username

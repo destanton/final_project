@@ -27,25 +27,24 @@ class Twentythreeandme(BaseOAuth2):
         #                          headers={'Authorization': 'Bearer {}'.format(access_token)})
         family = self.get_json('https://api.23andme.com/1/relatives/',
                                  headers={'Authorization': 'Bearer {}'.format(access_token)})
-
-        item = (family[0]["relatives"])
-        # relative = Relative.objects.create(user=self.request.user)
-        x = kwargs['user']
-        print(args, kwargs)
-        # print(x.id)
-        for name in item:
-            first = name.get("first_name")
-            last = name.get("last_name")
-            relationship = name.get("relationship")
-            birthyear = name.get("birth_year")
-            unique_id = name.get("match_id")
-            location = name.get("family_locations")
-            surname = name.get("family_surnames")
-            Relative.objects.create(user=x, first_name=first, last_name=last, relationship=relationship,
-                                birth_year=birthyear, unique_id=unique_id, location=location,
-                                family_surnames=surname)
-        print(last, first, relationship, birthyear, unique_id, location, surname)
-
+        if family:
+            item = (family[0]["relatives"])
+            # relative = Relative.objects.create(user=self.request.user)
+            x = kwargs['user']
+            for name in item:
+                first = name.get("first_name")
+                last = name.get("last_name")
+                relationship = name.get("relationship")
+                birthyear = name.get("birth_year")
+                unique_id = name.get("match_id")
+                location = name.get("family_locations")
+                surname = name.get("family_surnames")
+                Relative.objects.get_or_create(user=x, first_name=first, last_name=last, relationship=relationship,
+                                    birth_year=birthyear, unique_id=unique_id, location=location,
+                                    family_surnames=surname)
+                print(last, first, relationship, birthyear, unique_id, location, surname)
+        else:
+            print("no family")
 
         # item = (ancestry[0]["ancestry"]["sub_populations"])
         # new_list = []

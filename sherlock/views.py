@@ -6,7 +6,7 @@ from django.urls import reverse_lazy, reverse
 from rest_framework.response import Response
 import requests
 from rest_framework.views import APIView
-from sherlock.models import Profile, About
+from sherlock.models import Profile, About, Relative
 from final_project.backends import Twentythreeandme
 from haystack.generic_views import SearchView
 from haystack.query import SearchQuerySet
@@ -14,7 +14,6 @@ from haystack.forms import HighlightedModelSearchForm
 from haystack.utils import Highlighter
 from django.core.paginator import InvalidPage, Paginator
 from django.conf import settings
-
 
 
 class UserCreateView(CreateView):
@@ -33,6 +32,7 @@ class ProfileDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["profile"] = Profile.objects.filter(id=self.kwargs['pk'])
+        context["relative"] = Relative.objects.filter(id=self.kwargs['pk'])
         return context
 
 

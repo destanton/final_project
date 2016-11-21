@@ -4,8 +4,11 @@
 
 {% if request.user.is_authenticated %}
 <div class="ui container">
-    <div class="ui equal width grid">
+    <div class="ui two column grid">
       <div class="column">
+        <div class="row">
+
+
         <div class="sides">
           <div class="active side">
             <div class="ui card">
@@ -43,6 +46,8 @@
           </div>
         </div>
       </div>
+      </div>
+
     <div class="column">
       <div class="ui raised very padded text container segment">
           <h2 class="ui left floated header">About Me</h2>
@@ -113,7 +118,38 @@
           {% endfor %}
       </div>
     </div>
-</div>
+  </div>
+  </div>
+  <div class="ui container">
+
+
+    <div class="column">
+      <div class="ui very basic collapsing celled table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for thing in object.get_relative %}
+        <tr>
+            <td>
+              {{thing.first_name}}
+            </td>
+            <td>
+              {{thing.last_name}}
+            </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+
+    </table>
+      </div>
+    </div>
+      </div>
+
+    </div>
 </div>
 
 {% endif %}
