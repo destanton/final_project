@@ -23,7 +23,7 @@
                 </p>
                 <p>
 
-                  {{ result.object.biography }}
+                  {{ result.object.user.about.biography }}
 
                 </p>
             {% empty %}
@@ -38,7 +38,7 @@
                 </div>
             {% endif %}
         {% else %}
-          testing 123
+          Search All or specify field of "Search In"
         {% endif %}
     </form>
 {% endblock %}

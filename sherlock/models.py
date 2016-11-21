@@ -79,7 +79,7 @@ class About(models.Model):
     #     return self.biography
 
 class Relative(models.Model):
-    user = models.OneToOneField('auth.User')
+    user = models.ForeignKey('auth.User')
     first_name = models.CharField(max_length=50, blank=True)
     last_name = models.CharField(max_length=50, blank=True)
     relationship = models.CharField(max_length=30, blank=True)
@@ -87,4 +87,3 @@ class Relative(models.Model):
     unique_id = models.CharField(max_length=100, blank=True)
     location = models.TextField(blank=True)
     family_surnames = models.TextField(blank=True)
-    

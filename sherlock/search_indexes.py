@@ -26,10 +26,12 @@ class ProfileIndex(indexes.SearchIndex, indexes.Indexable):
 
 class AboutIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
-    user = indexes.CharField(model_attr="user")
-    # biography = indexes.CharField(model_attr="biography")
+    user = indexes.CharField(model_attr="user", faceted=True)
+    user_exact = indexes.CharField(model_attr="user")
+    biography = indexes.CharField(model_attr="biography")
     birthdate = indexes.CharField(model_attr="birthdate", null=True)
-    city_of_birth = indexes.CharField(model_attr="city_of_birth")
+    city_of_birth_exact = indexes.CharField(model_attr="city_of_birth")
+    city_of_birth = indexes.CharField(model_attr="city_of_birth", faceted=True)
     state_of_birth = indexes.CharField(model_attr="state_of_birth")
     country_of_birth = indexes.CharField(model_attr="country_of_birth")
     sex_at_birth = indexes.CharField(model_attr="sex_at_birth")
