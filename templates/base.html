@@ -31,10 +31,21 @@
           <div class="right menu">
             <div class="item">
               <div class="ui fluid search">
+                <form id="search_form" method="post" onsubmit="directSearch()">
+
                   <div class="ui icon input">
-                    <input class="prompt" type="text" placeholder="Search people..">
-                    <i class="search icon"></i>
+                      {% csrf_token %}
+                      <input class="prompt" type="text" placeholder="Find people..." name="search_by">
+                    <i class="search icon" type="submit"></i>
                   </div>
+                </form>
+                <script type="text/javascript">
+                  function directSearch(){
+                    var action_src = "http://localhost:8000/search/?q=" + document.getElementsByName("search_by")[0].value;
+                    var form_src = document.getElementsById('search_form');
+                    form_src.action = action_src;
+                  }
+                </script>
                 </div>
               </div>
             </div>

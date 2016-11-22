@@ -9,7 +9,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^messages/', include('django_messages.urls')),
-    url(r'^search/', include('haystack.urls')),
+    url(r'^search/', include('haystack.urls'), name='haystack_search'),
     url(r'^', include('django.contrib.auth.urls')),
     url(r'', include('social.apps.django_app.urls', namespace='social')),
     url(r'^$', IndexView.as_view(), name="index_view"),
