@@ -2,8 +2,12 @@
 
 
 {% block content %}
-    <h2>Search</h2>
+<div class="ui-p-container">
+  <div class="ui grid">
 
+
+  </div>
+    <h2>Search</h2>
     <form method="get" action=".">
         <table>
             {{ form.as_table }}
@@ -14,6 +18,7 @@
                 </td>
             </tr>
         </table>
+    </form>
 
         {% if query %}
             <h3>Results</h3>
@@ -70,5 +75,6 @@
 </table>
 
 
-    </form>
+  </div>
+</div>
 {% endblock %}
