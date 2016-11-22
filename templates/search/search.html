@@ -1,26 +1,45 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <div class="ui-p-container">
   <div class="ui grid">
 
+    <div class="column">
 
-  </div>
+
     <h2>Search</h2>
+    <div class="ui small form">
     <form method="get" action=".">
+
         <table>
-            {{ form.as_table }}
             <tr>
-                <td>&nbsp;</td>
+              <td><input id="id_q" name="q" type="search" value=""></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="ui slider checkbox">
+                  <input id="id_models_0" type="checkbox" name="models" value="sherlock.about">
+                  <label for="id_models_0">About</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="ui slider checkbox">
+                <input id="id_models_1" type="checkbox" name="models" value="sherlock.profile">
+                <label for="id_models_1">Profiles</label>
+              </div>
+            </td>
+            </tr>
+            <tr>
                 <td>
-                    <input type="submit" value="Search">
+                    <input type="submit" class="ui inverted blue button" value="Search">
                 </td>
             </tr>
         </table>
     </form>
-
+    </div>
         {% if query %}
+
             <h3>Results</h3>
 
   <table class="ui celled padded table">
@@ -74,7 +93,7 @@
   </tbody>
 </table>
 
-
+    </div>
   </div>
 </div>
 {% endblock %}

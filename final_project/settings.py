@@ -32,8 +32,9 @@ INSTALLED_APPS = [
     'django_messages',
     'django.contrib.sites',
     'haystack',
-    'sherlock'
+    'sherlock',
 ]
+
 SITE_ID = 1
 HAYSTACK_CONNECTIONS = {
     'default': {
