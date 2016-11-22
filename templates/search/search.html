@@ -45,17 +45,21 @@
   <table class="ui celled padded table">
   <thead>
     <tr>
+    <th>  </th>
     <th class="single line">Username</th>
     <th>Person</th>
     <th>Birthdate</th>
     <th>Location</th>
     <th class="single line">Searching For</th>
-    <th>Biography</th>
+    <th>Search Result</th>
   </tr>
 </thead>
   <tbody>
     {% for result in page.object_list %}
     <tr>
+      <td>
+        <img class="ui small image" src="{{ result.object.user.profile.picture.url }}" alt="Picture Not Found">
+      </td>
       <td>
         <h2 class="single line"><a href="{% url 'profile_detail_view' result.object.user.id %}">{{ result.object.user }}</a></h2>
       </td>
@@ -72,7 +76,12 @@
         {{ result.object.user.about.searching_for }}
       </td>
       <td>
-        {{ result.object.user.about.biography }}
+        {% for item in result.object.user.all_about %}
+          {{ item.object }}
+          {% if request.GET.q in item %}
+          {{ item }}
+          {% endif %}
+        {% endfor %}
       </td>
     </tr>
     {% empty %}

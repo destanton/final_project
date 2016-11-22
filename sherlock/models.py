@@ -82,6 +82,9 @@ class About(models.Model):
     # def __str__(self):
     #     return self.biography
 
+    @property
+    def all_about(self):
+        return About.objects.all()
 
 class Relative(models.Model):
     user = models.ForeignKey('auth.User')
