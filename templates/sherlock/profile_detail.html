@@ -26,9 +26,10 @@
                   {{object.get_year}}
                   <br>
                   {% if object.user == request.user %}
+
                   <a href="{% url 'messages_inbox' %}"><i class="large blue mail outline icon"></i></a>
                     {% load inbox %}
-                    <a class="ui teal circular label">{% inbox_count %}</a>
+                    <a class="ui mini teal circular label">{% inbox_count %}</a>
                   {% endif %}
                 </span>
                 <span>
