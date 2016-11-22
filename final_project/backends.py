@@ -26,7 +26,7 @@ class Twentythreeandme(BaseOAuth2):
         # response = self.get_json('https://api.23andme.com/1/names/',
         #                          headers={'Authorization': 'Bearer {}'.format(access_token)})
         family = self.get_json('https://api.23andme.com/1/relatives/',
-                                 headers={'Authorization': 'Bearer {}'.format(access_token)})
+                               headers={'Authorization': 'Bearer {}'.format(access_token)})
         if family:
             item = (family[0]["relatives"])
             # relative = Relative.objects.create(user=self.request.user)
@@ -39,9 +39,10 @@ class Twentythreeandme(BaseOAuth2):
                 unique_id = name.get("match_id")
                 location = name.get("family_locations")
                 surname = name.get("family_surnames")
+                similarity = name.get("similarity")
                 Relative.objects.get_or_create(user=x, first_name=first, last_name=last, relationship=relationship,
-                                    birth_year=birthyear, unique_id=unique_id, location=location,
-                                    family_surnames=surname)
+                                               birth_year=birthyear, unique_id=unique_id, location=location,
+                                               family_surnames=surname, similarity=similarity)
                 print(last, first, relationship, birthyear, unique_id, location, surname)
         else:
             print("no family")

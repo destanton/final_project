@@ -92,6 +92,7 @@ class Relative(models.Model):
     unique_id = models.CharField(max_length=100, blank=True)
     location = models.TextField(blank=True)
     family_surnames = models.TextField(blank=True)
+    similarity = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.user.username

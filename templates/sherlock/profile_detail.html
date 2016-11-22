@@ -127,19 +127,20 @@
       <div class="ui compact teal table">
           <table>
             <thead>
-              <tr class="center aligned">
+              <div class="logo">
+                <a class="item" href="{% url 'social:begin' 'twentythreeandme' %}">
+                <img src="/media/23andme.png" alt="sync with 23 and me"/></a>
+              </div>
+              <h2 class="twentythree"> 23andMe Relationship Results</h2>
+            {% if request.user.profile.get_relative %}
+              <tr class="center aligned"></tr>
                 <th class="highlighted">First Name</th>
                 <th>Last Name</th>
                 <th>Relationship</th>
                 <th>Birth Year</th>
                 <th>Location</th>
                 <th>Family Surnames</th>
-                <div class="logo">
-                  <a class="item" href="{% url 'social:begin' 'twentythreeandme' %}">
-                  <img src="/media/23andme.png" alt="sync with 23 and me"/></a>
-                </div>
-                <h2 class="twentythree"> 23andMe Relationship Results</h2>
-              </tr>
+                {% endif %}
             </thead>
             <tbody class="center aligned">
               {% for thing in object.get_relative %}
