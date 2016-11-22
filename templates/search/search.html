@@ -6,37 +6,18 @@
 
     <div class="column">
 
-
+    <div class="ui segment">
     <h2>Search</h2>
     <div class="ui small form">
     <form method="get" action=".">
-
-        <table>
-            <tr>
-              <td><input id="id_q" name="q" type="search" value=""></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="ui slider checkbox">
-                  <input id="id_models_0" type="checkbox" name="models" value="sherlock.about">
-                  <label for="id_models_0">About</label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><div class="ui slider checkbox">
-                <input id="id_models_1" type="checkbox" name="models" value="sherlock.profile">
-                <label for="id_models_1">Profiles</label>
-              </div>
-            </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" class="ui inverted blue button" value="Search">
-                </td>
-            </tr>
-        </table>
+      <div class="ui action input">
+        <input id="id_q" name="q" type="search" value="">
+        <button class="ui icon button" type="submit">
+          <i class="search icon"></i>
+        </button>
+      </div>
     </form>
+    </div>
     </div>
         {% if query %}
 
@@ -76,12 +57,9 @@
         {{ result.object.user.about.searching_for }}
       </td>
       <td>
-        {% for item in result.object.user.all_about %}
-          {{ item.object }}
-          {% if request.GET.q in item %}
-          {{ item }}
-          {% endif %}
-        {% endfor %}
+        {{ request.GET.q }}
+        {{ result.object.user.profile.get_one_about }}
+
       </td>
     </tr>
     {% empty %}
@@ -97,7 +75,7 @@
         </div>
     {% endif %}
 {% else %}
-  Search All or specify field of "Search In"
+  Perform a General Search
 {% endif %}
   </tbody>
 </table>
@@ -106,3 +84,13 @@
   </div>
 </div>
 {% endblock %}
+
+
+<div class="ui toggle checkbox floated right">
+  <input id="id_models_0" type="checkbox" name="models" value="sherlock.about">
+  <label for="id_models_0">About</label>
+</div>
+<div class="ui toggle checkbox">
+  <input id="id_models_1" type="checkbox" name="models" value="sherlock.profile">
+  <label for="id_models_1">Profiles</label>
+</div>

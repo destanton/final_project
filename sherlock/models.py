@@ -42,6 +42,9 @@ class Profile(models.Model):
     def get_relative(self):
         return Relative.objects.filter(user=self.user)
 
+    @property
+    def get_one_about(self):
+        return About.objects.get(user=self.user)
 
 class About(models.Model):
     GENDER = [
@@ -82,9 +85,12 @@ class About(models.Model):
     # def __str__(self):
     #     return self.biography
 
-    @property
     def all_about(self):
+        x = About.objects.all()
+        print('WHAT THE HELL')
+        print(x)
         return About.objects.all()
+
 
 class Relative(models.Model):
     user = models.ForeignKey('auth.User')
