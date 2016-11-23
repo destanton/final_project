@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',
     'django_messages',
     'django.contrib.sites',
+    'widget_tweaks',
     'haystack',
     'sherlock',
 ]

@@ -65,6 +65,11 @@ class AboutUpdateView(UpdateView):
 class ContactUsView(TemplateView):
     template_name = "contact.html"
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        context["form"] = ContactForm()
+        return context
+
 
 class SendEmailView(FormView):
     form_class = ContactForm
