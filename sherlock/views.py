@@ -1,18 +1,18 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, FormView
 from django.contrib.auth.forms import UserCreationForm, User
 from django.urls import reverse_lazy, reverse
 from rest_framework.response import Response
-import requests
+from sherlock.forms import ContactForm
 from rest_framework.views import APIView
 from sherlock.models import Profile, About, Relative
-from final_project.backends import Twentythreeandme
 from haystack.generic_views import FacetedSearchView
 from haystack.query import SearchQuerySet
 from haystack.utils import Highlighter
 from django.core.paginator import InvalidPage, Paginator
 from django.conf import settings
+from django.core.mail import send_mail
 
 
 class UserCreateView(CreateView):
@@ -60,19 +60,16 @@ class AboutUpdateView(UpdateView):
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('profile_detail_view', args=[int(self.kwargs['pk'])])
-# class AncestryAPIView(APIView):
 
-    # def get(self, access_token, *args, **kwargs):
-    #
-    #     r = requests.get('https://api.23andme.com/1/ancestry/',
-    #                      headers={'Authorization': 'Bearer {}'.format(access_token)})
-    #     print(r)
-    #     return Response(r.json())
-#
-# class AboutSearchView(SearchView):
-#     form_class = HighlightedModelSearchForm
-#
-#     def get_queryset(self):
-#         queryset = super(AboutSearchView, self).get_queryset()
-#         # queryset = queryset.filter(biography_auto__contains=self.request.GET.get('q'))
-#         return queryset
+
+class ContactUsView(TemplateView):
+    template_name = "contact.html"
+
+
+class SendEmailView(FormView):
+    form_class = ContactForm
+    success_url = reverse_lazy("index_view")
+
+    def form_valid(self, form):
+        form.send_email()
+        return super().form_valid(form)
