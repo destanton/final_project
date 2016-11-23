@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load highlight %}
 {% block content %}
 <div class="ui-p-container">
   <div class="ui grid">
@@ -37,6 +37,7 @@
   <tbody>
     {% for result in page.object_list %}
       {% if not result.object.user == request.user %}
+
     <tr>
       <td>
         <img class="ui small image" src="{{ result.object.user.profile.picture.url }}" alt="Picture Not Found">
@@ -57,7 +58,7 @@
         {{ result.object.user.about.searching_for }}
       </td>
       <td>
-        {{ result.object.user.about.biography }}
+        {% highlight result.object.user.about.biography with request.GET.q %}
 
       </td>
     </tr>
@@ -76,7 +77,7 @@
         </div>
     {% endif %}
 {% else %}
-  Perform a General Search
+  <h2>Perform a General Search</h2>
 {% endif %}
   </tbody>
 </table>

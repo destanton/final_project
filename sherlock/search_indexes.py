@@ -22,6 +22,7 @@ class ProfileIndex(indexes.SearchIndex, indexes.Indexable):
 
 class AboutIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.EdgeNgramField(document=True, use_template=True)
+    eye_color = indexes.CharField(model_attr="eye_color", boost=2)
     # suggestions = indexes.FacetCharField()
     #
     # def prepare(self, obj):

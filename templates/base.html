@@ -30,6 +30,7 @@
           <a class="item" href="{% url 'messages_inbox' %}">Inbox
              &nbsp;<i class="mail icon"></i>{% inbox_count %}</a>
           <a class="item" href="{% url 'logout' %}?next={% url 'index_view'%}">Logout</a>
+          <a class="item" href="/search/">Search</a>
           {% endif %}
           <div class="right menu">
             <div class="item">
