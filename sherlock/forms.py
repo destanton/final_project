@@ -2,6 +2,7 @@ from django import forms
 from django.core.mail import send_mail
 from haystack.forms import SearchForm
 
+
 class ContactForm(forms.Form):
     sender = forms.CharField(max_length=50)
     message = forms.CharField(widget=forms.Textarea)
@@ -10,7 +11,8 @@ class ContactForm(forms.Form):
         sender = self.cleaned_data["sender"]
         message = self.cleaned_data["message"]
         subject = "Contact Form Submission!"
-        body = """Hey Guys! You got a new contact form submission:
+        body = """
+        Hey Guys! You got a new contact form submission:
         From: {}
         Message: {}
         """.format(sender, message)

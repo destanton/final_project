@@ -46,6 +46,7 @@ class Profile(models.Model):
     def get_one_about(self):
         return About.objects.get(user=self.user)
 
+
 class About(models.Model):
     GENDER = [
         ('Male', 'Male'),

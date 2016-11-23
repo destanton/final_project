@@ -3,7 +3,7 @@
 
 {% block content %}
 
-  <div class="ui-p-container">
+  <div class="ui container">
     <div class="ui info message"><i class="close icon"></i>
         <div class="header">
           Thanks for checking out our site! </div>
@@ -16,11 +16,12 @@
       <form class="" action="{% url 'send_email_view' %}" method="post">
         {% csrf_token %}
         <p>
-
-          {{form.sender|attr:"placeholder: Enter your e-mail"}}
+          {{form.sender|add_class:"field"|attr:"placeholder: you@email.com"}}
         </p>
-          {{form.message|add_class:"field"|attr:"placeholder: Message here"}}
-        <button type="submit" name="">Send!</button>
+        <p>
+          {{form.message|add_class:"field"|attr:"placeholder: Tell us something!"}}
+        </p>
+        <button class="ui primary button" type="submit" name="">Send!</button>
       </form>
     </div>
 

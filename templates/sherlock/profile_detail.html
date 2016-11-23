@@ -55,6 +55,10 @@
                   {{thing.birthdate}}
               </div>
               <div class="item">
+                <div class="header">Age</div>
+                  {{thing.birthdate|timesince}}
+              </div>
+              <div class="item">
                 <div class="header">Birth City</div>
                   {{thing.city_of_birth}}
               </div>
@@ -65,6 +69,10 @@
               <div class="item">
                 <div class="header">Birth Country</div>
                   {{thing.country_of_birth}}
+              </div>
+              <div class="item">
+                <div class="header">Birth Hospital</div>
+                  {{thing.birth_hospital}}
               </div>
               <div class="item">
                 <div class="header">Birth Gender</div>
@@ -95,10 +103,6 @@
                   {{thing.father_last_name}}
               </div>
               <div class="item">
-                <div class="header">Birth Hospital</div>
-                  {{thing.birth_hospital}}
-              </div>
-              <div class="item">
                 <div class="header">Searching For My:</div>
                   {{thing.get_searching_for_display}}
               </div>
@@ -127,7 +131,7 @@
                 <img src="/media/23andme.png" alt="sync with 23 and me"/></a>
               </div>
               <h2 class="twentythree"> 23andMe Relationship Results</h2>
-            {% if request.user.profile.get_relative %}
+            {% if profile.get_relative %}
               <tr class="center aligned"></tr>
                 <th class="highlighted">First Name</th>
                 <th>Last Name</th>
