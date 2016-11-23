@@ -17,6 +17,7 @@
         {% csrf_token %}
         <p>
           {{form.sender|add_class:"field"|attr:"placeholder: you@email.com"}}
+          {% if form.subject.errors %}
         </p>
         <p>
           {{form.message|add_class:"field"|attr:"placeholder: Tell us something!"}}
@@ -24,8 +25,6 @@
         <button class="ui primary button" type="submit" name="">Send!</button>
       </form>
     </div>
-
-
   </div>
 
 {% endblock %}
@@ -41,17 +40,3 @@
     ;
 </script>
 {% endblock %}
-<div class="ui form">
-  <div class="ui fields">
-    <div class="five wide field">
-      <label>E-mail Address</label>
-      <input type="text" placeholder="Enter your email">
-    </div>
-  </div>
-</div>
-    <div class="ui form">
-      <div class="field">
-        <label>Message</label>
-        <textarea></textarea>
-      </div>
-    </div>

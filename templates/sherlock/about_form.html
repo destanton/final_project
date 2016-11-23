@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="pusher">
-  <form class="" action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-  <input type="submit" name="" value="Submit">
-  </form>
+<div class="ui container">
+  <div class="ui grid">
+    <div class="ui sixteend wide column">
+      <div class="ui teal raised segment">
+        <form class="ui small form" action="" method="post">
+          {% csrf_token %}
+          {{form.as_p}}
+        <input class="ui teal submit button" type="submit" name="" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>  
 </div>
 {% endblock %}

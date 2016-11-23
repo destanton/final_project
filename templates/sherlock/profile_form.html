@@ -1,39 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="pusher">
   {% if request.user.is_authenticated %}
     {% if object.user == request.user %}
-    
-      <form class="ui large form" action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-
-        <div class="">
-          <input class="ui fluid large teal submit button" type="submit" name="" value="Update">
-        </div>
-      </form>
+  <div class="ui container">
+    <div class="ui grid">
+      <div class="ui sixteen wide column">
+          <div class="ui teal raised segment">
+              <form class="ui small form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="ui teal submit button" type="submit" name="" value="Update">
+              </form>
+          </div>
+      </div>
+    </div>
+  </div>
     {% endif %}
   {% endif %}
-</div>
 {% endblock %}
-
-
-
-
-
-<div class="field">
-  <input type="file" name="picture" alt="Image_name">
-</div>
-<div class="field">
-  <input type="text" name="first_name">
-</div>
-<div class="field">
-  <input type="text" name="middle_name"
-</div>
-<div class="field">
-  <input type="text" name="last_name">
-</div>
-<div class="field">
-  <input type="text" name="gender">
-</div>

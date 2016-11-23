@@ -7,12 +7,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    url(r'', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^', include('django.contrib.auth.urls')),
+    url(r'^$', IndexView.as_view(), name="index_view"),
     url(r'^admin/', admin.site.urls),
     url(r'^messages/', include('django_messages.urls')),
     url(r'^search/', include('haystack.urls'), name='haystack_search'),
-    url(r'^', include('django.contrib.auth.urls')),
-    url(r'', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^$', IndexView.as_view(), name="index_view"),
     url(r'^create_user/$', UserCreateView.as_view(), name="user_create_view"),
     url(r'^accounts/profile/(?P<pk>\d+)/$', ProfileDetailView.as_view(), name="profile_detail_view"),
     url(r'^profile/update/(?P<pk>\d+)/$', ProfileUpdateView.as_view(), name='profile_update_view'),
