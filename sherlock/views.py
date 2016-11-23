@@ -4,12 +4,13 @@ from django.views.generic.edit import CreateView, UpdateView, FormView
 from django.contrib.auth.forms import UserCreationForm, User
 from django.urls import reverse_lazy, reverse
 from rest_framework.response import Response
-from sherlock.forms import ContactForm
+from sherlock.forms import ContactForm, BirthdateSearchForm
 from rest_framework.views import APIView
 from sherlock.models import Profile, About, Relative
 from haystack.generic_views import FacetedSearchView
 from haystack.query import SearchQuerySet
 from haystack.utils import Highlighter
+from haystack.forms import SearchForm
 from django.core.paginator import InvalidPage, Paginator
 from django.conf import settings
 from django.core.mail import send_mail
@@ -78,3 +79,7 @@ class SendEmailView(FormView):
     def form_valid(self, form):
         form.send_email()
         return super().form_valid(form)
+
+
+class BirthdateSearchView(SearchForm):
+    form_class = BirthdateSearchForm
