@@ -35,7 +35,10 @@
                   <h2 class="ui header">{% highlight result.object.user.profile.first_name with request.GET.q %} {% highlight result.object.user.profile.last_name with request.GET.q %}
                   </h2>
                   <p>{% highlight result.object.user.about.biography with request.GET.q %}</p>
-                  <div class="ui right floated button"><a href="{% url 'profile_detail_view' result.object.user.id %}">View <i class="right chevron icon"></i></a></div>
+                  <a href="{% url 'messages_compose' %}"><div class="ui primary button">Message</div></a>
+                  <a href="{% url 'profile_detail_view' result.object.user.id %}"><div class="ui right floated button">View <i class="right chevron icon"></i></div></a>
+
+                  </div>
                 </div>
               </div>
             </div>
