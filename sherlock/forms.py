@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from haystack.forms import SearchForm
 
 
+
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=50)
     email = forms.CharField(max_length=50)

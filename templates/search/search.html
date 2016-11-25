@@ -4,14 +4,12 @@
 <div class="ui-p-container">
   <div class="ui grid">
 
-    <div class="column">
-
-    <div class="ui segment">
+    <div class="three wide column">
     <h2>Search</h2>
     <div class="ui small form">
     <form method="get" action=".">
       <div class="ui action input">
-        <input id="id_q" name="q" type="search" value="q">
+        <input id="id_q" name="q" type="search" value="{{ request.GET.q }}">
         <button class="ui icon button" type="submit">
           <i class="search icon"></i>
         </button>
@@ -19,71 +17,49 @@
     </form>
     </div>
     </div>
+
+    <div class="one wide column">
+    </div>
+
+    <div class="twelve wide column">
         {% if query %}
-            <h3>Results</h3>
+            <h2>We Found:</h2>
+            {% for result in page.object_list %}
+              {% if not result.object.user == request.user %}
+            <div class="ui divided animated items list">
+              <div class="item">
+                <div class="image">
+                  <img class="ui small image" src="{{ result.object.user.profile.picture.url }}" alt="Picture Not Found">
+                </div>
+                <div class="content">
+                  <h2 class="ui header">{% highlight result.object.user.profile.first_name with request.GET.q %} {% highlight result.object.user.profile.last_name with request.GET.q %}
+                  </h2>
+                  <p>{% highlight result.object.user.about.biography with request.GET.q %}</p>
+                  <div class="ui right floated button"><a href="{% url 'profile_detail_view' result.object.user.id %}">View <i class="right chevron icon"></i></a></div>
+                </div>
+              </div>
+            </div>
 
-  <table class="ui celled padded table">
-  <thead>
-    <tr>
-    <th class="center aligned"><i class="photo icon"></i> </th>
-    <th class="single line">Username</th>
-    <th>Person</th>
-    <th>Birthdate</th>
-    <th>Location</th>
-    <th class="single line">Searching For</th>
-    <th>Search Result</th>
-  </tr>
-</thead>
-  <tbody>
-    {% for result in page.object_list %}
-      {% if not result.object.user == request.user %}
+              {% endif %}
+            {% empty %}
+                <p>No results found. Try broadening your search.</p>
 
-    <tr>
-      <td>
-        <img class="ui small image" src="{{ result.object.user.profile.picture.url }}" alt="Picture Not Found">
-      </td>
-      <td>
-        <h2 class="single line"><a href="{% url 'profile_detail_view' result.object.user.id %}">{{ result.object.user }}</a></h2>
-      </td>
-      <td class="single line">
-        {{ result.object.user.profile.first_name }} {{ result.object.user.profile.last_name }}
-      </td>
-      <td class="single line">
-        {{ result.object.user.about.birthdate }}
-      </td>
-      <td>
-        {{ result.object.user.about.city_of_birth }}
-      </td>
-      <td>
-        {{ result.object.user.about.searching_for }}
-      </td>
-      <td>
-        {% highlight result.object.user.about.biography with request.GET.q %}
+            {% endfor %}
 
-      </td>
-    </tr>
-      {% endif %}
-    {% empty %}
-          {{ suggestion }}
-        <p>No results found.</p>
-
-    {% endfor %}
-
-    {% if page.has_previous or page.has_next %}
-        <div>
-            {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
-            |
-            {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
-        </div>
-    {% endif %}
-{% else %}
-  <h2>Perform a General Search</h2>
-{% endif %}
-  </tbody>
-</table>
-
+            {% if page.has_previous or page.has_next %}
+                <div>
+                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                    |
+                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+          <h2>Seek & Find.</h2>
+        {% endif %}
+    </div>
     </div>
   </div>
+</div>
 </div>
 {% endblock %}
 
