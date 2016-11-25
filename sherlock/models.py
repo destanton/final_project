@@ -104,5 +104,5 @@ class Relative(models.Model):
     family_surnames = models.TextField(blank=True)
     similarity = models.CharField(max_length=50, blank=True)
 
-    def __str__(self):
-        return self.user.username
+    # def __str__(self):
+    #     return self.user.username
