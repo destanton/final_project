@@ -124,6 +124,7 @@
   <div class="ui grid">
     <div class="column">
       <div class="ui raised message">
+        <i class="close icon"></i>
         <div class="logo">
           <a class="item" href="{% url 'social:begin' 'twentythreeandme' %}">
           <img src="/media/23andme.png" alt="sync with 23 and me"/></a>
@@ -196,6 +197,15 @@
 <script type="text/javascript">
 $('.ui.dropdown')
 .dropdown()
+;
+
+$('.message .close')
+.on('click', function() {
+$(this)
+  .closest('.message')
+  .transition('fade')
+;
+})
 ;
 </script>
 {% endblock %}
