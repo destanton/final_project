@@ -12,12 +12,14 @@
           please shoot us a message with any feedback, concerns, or funny jokes (yes, dad jokes are encouraged!)
           </p>
     </div>
-    <div class="ui form segment">
+    <div class="ui teal raised form segment">
       <form class="" action="{% url 'send_email_view' %}" method="post">
         {% csrf_token %}
         <p>
-          {{form.sender|add_class:"field"|attr:"placeholder: you@email.com"}}
-          {% if form.subject.errors %}
+          {{form.name|add_class:"field"|attr:"placeholder: John Doe"}}
+        </p>
+        <p>
+          {{form.email|add_class:"field"|attr:"placeholder: you@email.com"}}
         </p>
         <p>
           {{form.message|add_class:"field"|attr:"placeholder: Tell us something!"}}
