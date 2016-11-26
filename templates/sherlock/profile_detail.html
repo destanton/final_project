@@ -123,29 +123,37 @@
   </div>
   <div class="ui grid">
     <div class="column">
-      <div class="ui raised message">
+      <div class="ui floating message">
         <i class="close icon"></i>
-        <div class="logo">
-          <a class="item" href="{% url 'social:begin' 'twentythreeandme' %}">
-          <img src="/media/23andme.png" alt="sync with 23 and me"/></a>
-        </div>
-        <div class="description">
-          <p>
-            Connect with 23andMe to import your top ten family relationship results. This will allow other users to see relational matches to use-which might help bring a connection!
-          </p>
-        </div>
+        <div class="content">
+          <div class="header">
+            Import your 23andMe Relative Results!
+          </div>
+            <p>
+              Connecting with 23andMe will import your top ten family relationship results, as listed in your 23andMe profile.
+              This will allow other users to see relational matches-which might help you connect with others!
+            </p>
+            <p>
+              Imported information includes:
+              First Name, Last Name, Relationship, Birth Year, DNA Similarity, Location, and Family Surnames.
+            </p>
+          </div>
+          <div class="logo">
+            <a class="item" href="{% url 'social:begin' 'twentythreeandme' %}">
+            <img src="/media/23andme.png" alt="sync with 23 and me"/></a>
+          </div>
         </div>
     </div>
 
   </div>
   <div class="ui grid">
     <div class="column">
+      {% if object.get_relative %}
+      <h2 class="twentythree"> 23andMe Relative Results</h2>
       <div class="ui compact teal table">
-        {% if object.get_relative %}
+
           <table>
             <thead>
-              <h2 class="twentythree"> 23andMe Relationship Results</h2>
-
               <tr class="center aligned">
                 <th>First Name</th>
                 <th>Last Name</th>

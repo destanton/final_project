@@ -2,8 +2,8 @@
 
 <div class="ui fluid five item menu">
     <a class="active red item" href="{% url 'profile_detail_view' request.user.id %} "><i class="arrow left icon"></i>Profile</a>
-    <a class="active teal item" href="{% url 'messages_inbox' %} "><i class="inbox icon"></i></a>
-    <a class="active teal item" href="{% url 'messages_compose' %} "><i class="write icon"></i></a>
-    <a class="active teal item" href="{% url 'messages_outbox' %} "><i class="send outline icon"></i></a>
-    <a class="active teal item" href="{% url 'messages_trash' %} "><i class="trash outline icon"></i></a>
+    <a class="active teal item" href="{% url 'messages_inbox' %} "><i class="inbox icon"></i>Inbox</a>
+    <a class="active teal item" href="{% url 'messages_compose' %} "><i class="write icon"></i>Compose</a>
+    <a class="active teal item" href="{% url 'messages_outbox' %} "><i class="send outline icon"></i>Sent</a>
+    <a class="active teal item" href="{% url 'messages_trash' %} "><i class="trash outline icon"></i>Trash</a>
 </div>
