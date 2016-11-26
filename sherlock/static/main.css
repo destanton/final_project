@@ -39,6 +39,11 @@
   height: 556px;
 }
 
+.about {
+  text-align: center;
+  padding-top: 1em;
+}
+
 .ui- {
   margin-left: -10px;
   margin-right: 70px;

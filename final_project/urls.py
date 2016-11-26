@@ -2,7 +2,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from sherlock.views import IndexView, UserCreateView, ProfileDetailView, ProfileUpdateView,\
-                           AboutUpdateView, ContactUsView, SendEmailView
+                           AboutUpdateView, ContactUsView, SendEmailView,\
+                           AboutUsView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -19,4 +20,5 @@ urlpatterns = [
     url(r'^about/update/(?P<pk>\d+)/$', AboutUpdateView.as_view(), name='about_update_view'),
     url(r'^contact_us/$', ContactUsView.as_view(), name='contact_us_view'),
     url(r'^send_email/$', SendEmailView.as_view(), name='send_email_view'),
+    url(r'^about_us/$', AboutUsView.as_view(), name="about_us_view"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

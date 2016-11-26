@@ -77,3 +77,7 @@ class SendEmailView(FormView):
 
 class BirthdateSearchView(SearchForm):
     form_class = BirthdateSearchForm
+
+
+class AboutUsView(TemplateView):
+    template_name = "about.html"
