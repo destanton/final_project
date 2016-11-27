@@ -51,7 +51,7 @@ class Profile(models.Model):
     def get_image(self):
         return Image.objects.filter(user=self.user)
 
-    
+
 class About(models.Model):
     GENDER = [
         ('Male', 'Male'),
@@ -111,7 +111,7 @@ class Image(models.Model):
     user = models.ForeignKey('auth.User')
     picture = models.FileField()
     description = models.CharField(max_length=150, blank=True)
-    created = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True)
 
     @property
     def image_url(self):

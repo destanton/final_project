@@ -83,6 +83,19 @@ class AboutUsView(TemplateView):
     template_name = "about.html"
 
 
+class ImageAddView(CreateView):
+    model = Image
+    fields = ('picture', 'description', )
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.user = self.request.user
+        return super().form_valid(form)
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('profile_detail_view', args=[int(self.kwargs['pk'])])
+
+
 class ImageUpdateView(UpdateView):
     model = Image
     fields = ('picture', 'description', )
