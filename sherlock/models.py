@@ -86,8 +86,6 @@ class About(models.Model):
     # def __str__(self):
     #     return self.biography
 
-    
-
 
 class Relative(models.Model):
     user = models.ForeignKey('auth.User')
@@ -102,3 +100,16 @@ class Relative(models.Model):
 
     # def __str__(self):
     #     return self.user.username
+
+
+class Image(models.Model):
+    user = models.ForeignKey('auth.User')
+    picture = models.FileField()
+    description = models.CharField(max_length=150, blank=True)
+    created = models.DateTimeField()
+
+    @property
+    def image_url(self):
+        if self.picture:
+            return self.picture.url
+        return 'http://www.metrovancouver.org/services/parks/reservable-facilities/FacilityPhotos/no-picture.gif'
