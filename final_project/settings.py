@@ -1,6 +1,7 @@
 
 import os
 from django.urls import reverse_lazy
+from urlparse import urlparse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,14 +38,22 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
+
+es = urlparse(os.environ.get('SEARCHBOX_URL') or 'http://127.0.0.1:9200/')
+
+port = es.port or 80
+
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'localhost:9200',
+        'URL': es.scheme + '://' + es.hostname + ':' + str(port),
         'INDEX_NAME': 'haystack',
         'INCLUDE_SPELLING': True,
     },
 }
+
+if es.username:
+    HAYSTACK_CONNECTIONS['default']['KWARGS'] = {"http_auth": es.username + ':' + es.password}
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
