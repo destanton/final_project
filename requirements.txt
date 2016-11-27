@@ -11,3 +11,4 @@ psycopg2
 whitenoise
 django-widget-tweaks
 easy-thumbnails
+django-storages
