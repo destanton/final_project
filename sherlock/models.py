@@ -86,11 +86,7 @@ class About(models.Model):
     # def __str__(self):
     #     return self.biography
 
-    def all_about(self):
-        x = About.objects.all()
-        print('WHAT THE HELL')
-        print(x)
-        return About.objects.all()
+    
 
 
 class Relative(models.Model):
