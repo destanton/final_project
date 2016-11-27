@@ -1,4 +1,6 @@
 {{ object.user }}
+{{ object.user.profile.first_name }}
+{{ object.user.profile.last_name }}
 {{ object.biography }}
 {{ object.birthdate }}
 {{ object.city_of_birth }}
