@@ -10,6 +10,7 @@ def create_user_profile(**kwargs):
     if created:
         Profile.objects.create(user=instance)
         About.objects.create(user=instance)
+        Image.objects.create(user=instance)
 
 
 class Profile(models.Model):
@@ -46,7 +47,11 @@ class Profile(models.Model):
     def get_one_about(self):
         return About.objects.get(user=self.user)
 
+    @property
+    def get_image(self):
+        return Image.objects.filter(user=self.user)
 
+    
 class About(models.Model):
     GENDER = [
         ('Male', 'Male'),
@@ -68,7 +73,7 @@ class About(models.Model):
         ('Sibling', 'Sibling')
     ]
     user = models.OneToOneField('auth.User')
-    biography = models.TextField(max_length=255)
+    biography = models.TextField()
     birthdate = models.DateField(null=True)
     city_of_birth = models.CharField(max_length=255, blank=True)
     state_of_birth = models.CharField(max_length=150, blank=True)
@@ -112,4 +117,4 @@ class Image(models.Model):
     def image_url(self):
         if self.picture:
             return self.picture.url
-        return 'http://www.metrovancouver.org/services/parks/reservable-facilities/FacilityPhotos/no-picture.gif'
+        # return 'http://www.metrovancouver.org/services/parks/reservable-facilities/FacilityPhotos/no-picture.gif'

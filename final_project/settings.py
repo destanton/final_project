@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'social.apps.django_app.default',
     'django_messages',
+    'easy_thumbnails',
     'django.contrib.sites',
     'widget_tweaks',
     'haystack',

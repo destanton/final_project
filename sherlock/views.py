@@ -6,7 +6,7 @@ from django.urls import reverse_lazy, reverse
 from rest_framework.response import Response
 from sherlock.forms import ContactForm, BirthdateSearchForm
 from rest_framework.views import APIView
-from sherlock.models import Profile, About, Relative
+from sherlock.models import Profile, About, Relative, Image
 from haystack.generic_views import FacetedSearchView
 from haystack.query import SearchQuerySet
 from haystack.utils import Highlighter
@@ -81,3 +81,14 @@ class BirthdateSearchView(SearchForm):
 
 class AboutUsView(TemplateView):
     template_name = "about.html"
+
+
+class ImageUpdateView(UpdateView):
+    model = Image
+    fields = ('picture', 'description', )
+
+    def get_queryset(self):
+        return Image.objects.filter(user=self.request.user)
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('profile_detail_view', args=[int(self.kwargs['pk'])])

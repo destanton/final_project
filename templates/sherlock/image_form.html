@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="ui container">
+  <div class="ui grid">
+    <div class="ui sixteen wide column">
+      <div class="ui teal form segment">
+        <form class="" action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input class="ui blue button" type="submit" name="" value="Save">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
