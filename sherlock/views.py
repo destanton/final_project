@@ -87,9 +87,13 @@ class AboutUsView(TemplateView):
     template_name = "about.html"
 
 
-class ImageAllView(ListView):
-    model = Image
+class ImageAllView(TemplateView):
+    template_name = "images.html"
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        context["image"] = Image.objects.all()
+        return context
 
 class ImageAddView(CreateView):
     model = Image

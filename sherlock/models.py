@@ -127,3 +127,7 @@ class Image(models.Model):
         if self.picture:
             return self.picture.url
         # return 'http://www.metrovancouver.org/services/parks/reservable-facilities/FacilityPhotos/no-picture.gif'
+
+    @property
+    def get_user_image(self):
+        return Image.objects.filter(user=self.user)
