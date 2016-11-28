@@ -1,6 +1,5 @@
 from haystack import indexes
 from sherlock.models import Profile, About
-from elasticstack.fields import EdgeNgramField
 
 
 # class ProfileIndex(indexes.SearchIndex, indexes.Indexable):
