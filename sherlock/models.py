@@ -33,7 +33,7 @@ class Profile(models.Model):
     def profile_pic(self):
         if self.picture:
             return self.picture.url
-        return ""
+        return "https://s3.amazonaws.com/tdh-des/picture_QxzJ8oP.png"
 
     @property
     def get_year(self):

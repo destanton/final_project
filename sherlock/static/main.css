@@ -1,5 +1,5 @@
 .masthead {
-  background-image: url(https://s3.amazonaws.com/tdh-des/Embrace.jpg) !important;
+  background-image: {% static 'images/Embrace.jpg' %} !important;
   background-size: cover !important;
   min-height: 800px;
 }
