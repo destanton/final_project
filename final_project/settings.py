@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'haystack',
     'storages',
     'sherlock',
-    'elasticstack'
 ]
 
 SITE_ID = 1
