@@ -2,20 +2,18 @@
 
 {% block content %}
 <div class="ui container">
-  <div class="ui grid">
-    <div class="ui sixteen wide column">
-      <div class="ui teal raised form segment">
-        <form class="" action="" method="post">
-          {% csrf_token %}
-          {{form.as_p}}
-          <input class="ui teal button" type="submit" name="" value="Create User">
-        </form>
+  <div class="ui equal width grid">
+    <div class="column"></div>
+      <div class="ui ten wide column">
+        <div class="ui raised form segment">
+          <form class="" action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input class="ui fluid large teal submit button" type="submit" name="" value="Create User">
+          </form>
+        </div>
       </div>
-    </div>
+    <div class="column"></div>
   </div>
 </div>
-
-
-
-
 {% endblock %}
