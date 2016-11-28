@@ -15,3 +15,6 @@
 {{ object.father_last_name }}
 {{ object.birth_hospital }}
 {{ object.searching_for }}
+{% for item in object.user.about.get_images %}
+  {{ item.description }}
+{% endfor %}

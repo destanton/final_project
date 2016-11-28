@@ -90,6 +90,10 @@ class About(models.Model):
     # def __str__(self):
     #     return self.biography
 
+    @property
+    def get_images(self):
+        return Image.objects.filter(user=self.user)
+
 
 class Relative(models.Model):
     user = models.ForeignKey('auth.User')
