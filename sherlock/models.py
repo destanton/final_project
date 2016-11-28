@@ -15,7 +15,7 @@ def create_user_profile(**kwargs):
 
 class Profile(models.Model):
     user = models.OneToOneField('auth.User')
-    picture = models.FileField(default='picture.png')
+    picture = models.FileField(upload_to='profile_img')
     first_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=50, blank=True)
     last_name = models.CharField(max_length=50)
@@ -33,6 +33,7 @@ class Profile(models.Model):
     def profile_pic(self):
         if self.picture:
             return self.picture.url
+        return ""
 
     @property
     def get_year(self):
@@ -117,7 +118,7 @@ class Relative(models.Model):
 
 class Image(models.Model):
     user = models.ForeignKey('auth.User')
-    picture = models.FileField()
+    picture = models.FileField(upload_to='album_img')
     description = models.CharField(max_length=150, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
