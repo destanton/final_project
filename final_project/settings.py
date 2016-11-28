@@ -59,6 +59,7 @@ if es.username:
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 5
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

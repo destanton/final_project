@@ -18,6 +18,13 @@
       </div>
     </form>
     </div>
+    {% if page.has_previous or page.has_next %}
+        <div>
+            {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+            |
+            {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+        </div>
+    {% endif %}
     </div>
 
     <div class="one wide column">
@@ -25,8 +32,9 @@
 
     <div class="twelve wide column">
         {% if query %}
+
             <h2>We Found:</h2>
-            {% autopaginate page.object_list 4 %}
+
             {% for result in page.object_list %}
               {% if not result.object.user == request.user %}
             <div class="ui divided animated items list">
@@ -70,14 +78,6 @@
                 <p>No results found. Try broadening your search.</p>
 
             {% endfor %}
-            {% paginate %}
-            {% if page.has_previous or page.has_next %}
-                <div>
-                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
-                    |
-                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
-                </div>
-            {% endif %}
         {% else %}
           <h2>Seek & Find.</h2>
         {% endif %}
