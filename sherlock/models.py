@@ -23,7 +23,7 @@ class Profile(models.Model):
     joined = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.user.username
+        return str(self.user.id)
 
     @property
     def profile_pic(self):

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="ui container">
+  <div class="ui grid">
+    <div class="ui sixteen wide column">
+      <div class="ui teal form segment">
+        <form class="" action="" method="post">
+          {% csrf_token %}
+          <div class="content">
+            <p>
+              You are about to permanently delete this photo: <strong>{{object.picture}}</strong>.
+              &nbsp;Are you sure you want to proceed?
+            </p>
+            <input class="ui green icon button" type="submit" name="" value="Yes">
+
+            <button class="ui red icon button" type="button" name="">
+              <a class="ui-white-link" href="{% url 'profile_detail_view' user.id %}">No</a></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

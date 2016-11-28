@@ -33,7 +33,7 @@
                 </span>
                 <span>
                   <i class="user icon"></i>
-                  {{object}} <br>
+                  {{object.user.username}} <br>
                   {% if object.user == request.user %}
                   <a href="{% url 'profile_update_view' object.id %}"></i><i class="large blue edit icon"></i></a>
                   {% endif %}
@@ -122,14 +122,38 @@
               </div>
           {% endfor %}
   </div>
-  <div class="ui grid">
-      {% for image in object.get_image %}
-        <div class="four wide column">
-          <img class="ui medium image" src="{{image.image_url}}" alt="">
-          {{image.description}}
-        </div>
-      {% endfor %}
-  </div>
+  <div class="ui divider"></div>
+  {% if object.user == request.user %}
+  <button class="ui blue right floated basic button"type="button" name="">
+  <a class="a-foot" href="{% url 'image_add_view' %}"><i class="ui camera icon"></i>Upload Image</a></button>
+  {% endif %}
+    <div class="ui grid">
+        {% for image in object.get_image %}
+          <div class="four wide column">
+            <div class="ui medium image">
+            {% if object.user == request.user %}
+            <div class="ui dimmer">
+              <div class="content">
+                <div class="center">
+                  <h2 class="ui inverted header"></h2>
+                  <div class="ui primary button">
+                    <a class="ui-white-link" href="{% url 'image_update_view' image.id %}">Edit</a></div>
+                  <div class="ui button">
+                    <a href="{% url 'image_delete_view' image.id %}">Delete</a></div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            <img class="ui medium image" src="{{image.image_url}}" alt="">
+          </div>
+
+            {{image.description}}
+          </div>
+        {% endfor %}
+
+    </div>
+    <br>
+<div class="ui divider"></div>
   <div class="ui grid">
     <div class="column">
       <div class="ui floating info message">
@@ -226,7 +250,13 @@
       .closest('.message')
       .transition('fade')
     ;
-    })
+      })
     ;
+    $('.dimmer')
+      .dimmer({
+        on: 'hover'
+      })
+        ;
 </script>
+
 {% endblock %}

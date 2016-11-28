@@ -24,6 +24,11 @@
 
 .ui-white-link{
   color: white;
+
+}
+
+a:hover{
+  color: black;
 }
 
 .a-foot{

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, DeleteView
 from django.views.generic.edit import CreateView, UpdateView, FormView
 from django.contrib.auth.forms import UserCreationForm, User
 from django.urls import reverse_lazy, reverse
@@ -28,6 +28,7 @@ class IndexView(TemplateView):
 
 class ProfileDetailView(DetailView):
     model = Profile
+    paginate_by = 6
 
 
 class ProfileUpdateView(UpdateView):
@@ -92,8 +93,9 @@ class ImageAddView(CreateView):
         instance.user = self.request.user
         return super().form_valid(form)
 
-    def get_success_url(self, **kwargs):
-        return reverse_lazy('profile_detail_view', args=[int(self.kwargs['pk'])])
+    def get_success_url(self, *args, **kwargs):
+        profile_id = Profile.objects.get(id=self.request.user.id)
+        return reverse('profile_detail_view', args=[profile_id])
 
 
 class ImageUpdateView(UpdateView):
@@ -103,5 +105,18 @@ class ImageUpdateView(UpdateView):
     def get_queryset(self):
         return Image.objects.filter(user=self.request.user)
 
-    def get_success_url(self, **kwargs):
-        return reverse_lazy('profile_detail_view', args=[int(self.kwargs['pk'])])
+    def get_success_url(self, *args, **kwargs):
+        profile_id = Profile.objects.get(id=self.request.user.id)
+        return reverse('profile_detail_view', args=[profile_id])
+
+
+class ImageDeleteView(DeleteView):
+    model = Image
+    fields = ('picture', 'description', )
+
+    def get_queryset(self):
+        return Image.objects.filter(user=self.request.user)
+
+    def get_success_url(self, *args, **kwargs):
+        profile_id = Profile.objects.get(id=self.request.user.id)
+        return reverse('profile_detail_view', args=[profile_id])
