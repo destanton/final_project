@@ -87,6 +87,10 @@ class AboutUsView(TemplateView):
     template_name = "about.html"
 
 
+class ImageAllView(ListView):
+    model = Profile
+
+
 class ImageAddView(CreateView):
     model = Image
     fields = ('picture', 'description', )

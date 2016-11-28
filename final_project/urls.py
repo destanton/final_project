@@ -1,10 +1,10 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from sherlock.views import IndexView, UserCreateView, ProfileDetailView, MyProfileDetailView, ProfileUpdateView,\
+from sherlock.views import IndexView, UserCreateView, ProfileDetailView, MyProfileDetailView,\
                            AboutUpdateView, ContactUsView, SendEmailView,\
                            AboutUsView, ImageAddView, ImageUpdateView,\
-                           ImageDeleteView
+                           ImageDeleteView, ProfileUpdateView, ImageAllView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^accounts/profile/$', MyProfileDetailView.as_view(), name="my_profile_detail_view"),
     url(r'^accounts/profile/(?P<pk>\d+)/$', ProfileDetailView.as_view(), name="profile_detail_view"),
     url(r'^profile/update/(?P<pk>\d+)/$', ProfileUpdateView.as_view(), name='profile_update_view'),
+    url(r'^image/all/(?P<pk>\d+)/$', ImageAllView.as_view(), name='image_all_view'),
     url(r'^image/add/$', ImageAddView.as_view(), name='image_add_view'),
     url(r'^image/update/(?P<pk>\d+)/$', ImageUpdateView.as_view(), name='image_update_view'),
     url(r'^image/delete/(?P<pk>\d+)/$', ImageDeleteView.as_view(), name='image_delete_view'),

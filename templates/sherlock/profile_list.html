@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="ui-p-container">
+  {% for image in object.get_image %}
+    {{image.image_url}}
+  {% endfor %}
+</div>
+
+{% endblock %}
