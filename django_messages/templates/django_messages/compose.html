@@ -11,7 +11,7 @@
             {% csrf_token %}
               <table>
                 <p>
-                  {{form.recipient|add_class:"field"|attr:"placeholder: Username"}}
+                  {% render_field form.recipient class="field" placeholder="Username" value=request.GET.recipient %}
                 </p>
                 <p>
                   {{form.subject|add_class:"field"|attr:"placeholder: Subject"}}

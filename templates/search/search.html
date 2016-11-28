@@ -62,7 +62,7 @@
                   </div>
 
 
-                  <a href="{% url 'messages_compose' %}"><div class="ui primary button">Message</div></a>
+                  <a href="{% url 'messages_compose' %}?recipient={{result.object.user.username}}"><div class="ui primary button">Message</div></a>
                   <a href="{% url 'profile_detail_view' result.object.user.id %}"><div class="ui right floated button">View <i class="right chevron icon"></i></div></a>
 
                   </div>
