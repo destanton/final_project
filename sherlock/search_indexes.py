@@ -1,7 +1,6 @@
 from haystack import indexes
 from sherlock.models import Profile, About
-from haystack.utils import Highlighter
-
+from elasticstack.fields import EdgeNgramField
 
 
 # class ProfileIndex(indexes.SearchIndex, indexes.Indexable):
@@ -22,7 +21,6 @@ from haystack.utils import Highlighter
 
 class AboutIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.EdgeNgramField(document=True, use_template=True)
-    eye_color = indexes.CharField(model_attr="eye_color", boost=2)
     # suggestions = indexes.FacetCharField()
     #
     # def prepare(self, obj):

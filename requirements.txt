@@ -13,3 +13,4 @@ django-widget-tweaks
 easy-thumbnails
 django-storages
 boto
+elasticstack

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'haystack',
     'storages',
     'sherlock',
+    'elasticstack'
 ]
 
 SITE_ID = 1
@@ -45,12 +46,12 @@ port = es.port or 80
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'ENGINE': 'final_project.search_backends.ConfigurableElasticSearchEngine',
         'URL': es.scheme + '://' + es.hostname + ':' + str(port),
         'INDEX_NAME': 'haystack',
-        'INCLUDE_SPELLING': True,
     },
 }
+
 
 if es.username:
     HAYSTACK_CONNECTIONS['default']['KWARGS'] = {"http_auth": es.username + ':' + es.password}
@@ -160,6 +161,7 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
 # DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
