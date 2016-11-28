@@ -47,7 +47,6 @@
 
                 <form id="search_form" action="{% url 'haystack_search' %}" method="get">
                   <div class="ui icon input">
-                      {% csrf_token %}
                       <input class="prompt" type="text" placeholder="Find people..." name="q">
                     <i class="search icon" type="submit"></i>
                   </div>
