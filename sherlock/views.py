@@ -88,7 +88,7 @@ class AboutUsView(TemplateView):
 
 
 class ImageAllView(ListView):
-    model = Profile
+    model = Image
 
 
 class ImageAddView(CreateView):
