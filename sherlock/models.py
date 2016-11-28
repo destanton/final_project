@@ -10,7 +10,6 @@ def create_user_profile(**kwargs):
     if created:
         Profile.objects.create(user=instance)
         About.objects.create(user=instance)
-        Image.objects.create(user=instance)
 
 
 class Profile(models.Model):
