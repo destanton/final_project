@@ -1,6 +1,7 @@
 from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.urls import reverse
 
 
 @receiver(post_save, sender='auth.User')
@@ -23,6 +24,10 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user.id)
+
+    @property
+    def get_absolute_url(self, **kwargs):
+        return reverse('profile_detail_view', kwargs={'pk': self.id})
 
     @property
     def profile_pic(self):

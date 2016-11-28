@@ -1,8 +1,6 @@
 
 import os
-from django.urls import reverse_lazy
 from urllib.parse import urlparse
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -152,7 +150,8 @@ USE_TZ = True
 SOCIAL_AUTH_TWENTYTHREEANDME_KEY = os.environ.get("SOCIAL_AUTH_TWENTYTHREEANDME_KEY")
 SOCIAL_AUTH_TWENTYTHREEANDME_SECRET = os.environ.get("SOCIAL_AUTH_TWENTYTHREEANDME_SECRET")
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = '/'  # reverse_lazy("index_view")
+# LOGIN_REDIRECT_URL = lambda u: '/accounts/profile/{}/'.format(u.pk)
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

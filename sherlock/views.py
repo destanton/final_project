@@ -28,7 +28,6 @@ class IndexView(TemplateView):
 
 class ProfileDetailView(DetailView):
     model = Profile
-    paginate_by = 6
 
 
 class ProfileUpdateView(UpdateView):
@@ -94,8 +93,8 @@ class ImageAddView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self, *args, **kwargs):
-        profile_id = Profile.objects.get(id=self.request.user.id)
-        return reverse('profile_detail_view', args=[profile_id])
+        profile = Profile.objects.get(id=self.request.user.id)
+        return reverse('profile_detail_view', args=[profile.id])
 
 
 class ImageUpdateView(UpdateView):
@@ -106,8 +105,8 @@ class ImageUpdateView(UpdateView):
         return Image.objects.filter(user=self.request.user)
 
     def get_success_url(self, *args, **kwargs):
-        profile_id = Profile.objects.get(id=self.request.user.id)
-        return reverse('profile_detail_view', args=[profile_id])
+        profile = Profile.objects.get(id=self.request.user.id)
+        return reverse('profile_detail_view', args=[profile.id])
 
 
 class ImageDeleteView(DeleteView):
