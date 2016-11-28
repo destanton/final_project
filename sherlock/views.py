@@ -30,16 +30,20 @@ class ProfileDetailView(DetailView):
     model = Profile
 
 
+class MyProfileDetailView(ProfileDetailView):
+
+    def get_object(self):
+        return self.request.user.profile
+
+
 class ProfileUpdateView(UpdateView):
     model = Profile
     # success_url = reverse_lazy('profile_detail_view')
     fields = ('picture', 'first_name', 'middle_name', 'last_name', 'gender', )
+    success_url = reverse_lazy('my_profile_detail_view')
 
     def get_queryset(self):
         return Profile.objects.filter(user=self.request.user)
-
-    def get_success_url(self, **kwargs):
-        return reverse_lazy('profile_detail_view', args=[int(self.kwargs['pk'])])
 
 
 class AboutUpdateView(UpdateView):
@@ -93,8 +97,7 @@ class ImageAddView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self, *args, **kwargs):
-        profile = Profile.objects.get(id=self.request.user.id)
-        return reverse('profile_detail_view', args=[profile.id])
+        return reverse('profile_detail_view', args=[self.request.user.profile.id])
 
 
 class ImageUpdateView(UpdateView):
@@ -105,8 +108,7 @@ class ImageUpdateView(UpdateView):
         return Image.objects.filter(user=self.request.user)
 
     def get_success_url(self, *args, **kwargs):
-        profile = Profile.objects.get(id=self.request.user.id)
-        return reverse('profile_detail_view', args=[profile.id])
+        return reverse('profile_detail_view', args=[self.request.user.profile.id])
 
 
 class ImageDeleteView(DeleteView):
@@ -117,5 +119,4 @@ class ImageDeleteView(DeleteView):
         return Image.objects.filter(user=self.request.user)
 
     def get_success_url(self, *args, **kwargs):
-        profile_id = Profile.objects.get(id=self.request.user.id)
-        return reverse('profile_detail_view', args=[profile_id])
+        return reverse('profile_detail_view', args=[self.request.user.profile.id])

@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from sherlock.views import IndexView, UserCreateView, ProfileDetailView, ProfileUpdateView,\
+from sherlock.views import IndexView, UserCreateView, ProfileDetailView, MyProfileDetailView, ProfileUpdateView,\
                            AboutUpdateView, ContactUsView, SendEmailView,\
                            AboutUsView, ImageAddView, ImageUpdateView,\
                            ImageDeleteView
@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^messages/', include('django_messages.urls')),
     url(r'^search/', include('haystack.urls')),
     url(r'^create_user/$', UserCreateView.as_view(), name="user_create_view"),
+    url(r'^accounts/profile/$', MyProfileDetailView.as_view(), name="my_profile_detail_view"),
     url(r'^accounts/profile/(?P<pk>\d+)/$', ProfileDetailView.as_view(), name="profile_detail_view"),
     url(r'^profile/update/(?P<pk>\d+)/$', ProfileUpdateView.as_view(), name='profile_update_view'),
     url(r'^image/add/$', ImageAddView.as_view(), name='image_add_view'),
