@@ -49,50 +49,89 @@
           {% endif %}
           <br>
           <div class="ui divider"></div>
-          {% for thing in object.get_about %}
             <div class="ui very relaxed horizontal list">
-              <br>
+              {% for thing in object.get_about %}
                     <div class="item">
                         <div class="content">
+                          <p>
                           <div class="header">Birthday</div>
+                          <div class="description">
                             {{thing.birthdate}}
+                          </div>
+                          </p>
+                          <p>
                           <div class="header">Age</div>
                             {{thing.birthdate|timesince}}
-                          <div class="header">Birth City</div>
-                            {{thing.city_of_birth}}
-                          <div class="header">Birth State</div>
-                            {{thing.state_of_birth}}
+                          </p>
+                          <p>
+                            <div class="header">Birth City</div>
+                              {{thing.city_of_birth}}
+                          </p>
                         </div>
                     </div>
+                    <div class="item">
+                      <div class="content">
+                        <p>
+                        <div class="header">Birth State</div>
+                          {{thing.state_of_birth}}
+                          </p>
+                          <p>
+                            <div class="header">Birth Country</div>
+                              {{thing.country_of_birth}}
+                          </p>
+                          <p>
+                            <div class="header">Birth Hospital</div>
+                              {{thing.birth_hospital}}
+                          </p>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="content">
+                        <p>
+                          <div class="header">Birth Gender</div>
+                            {{thing.get_sex_at_birth_display}}
+                        </p>
+                        <p>
+                          <div class="header">Eye Color</div>
+                            {{thing.get_eye_color_display}}
+                        </p>
+                        <p>
+                          <div class="header">Mother's First Name</div>
+                            {{thing.mother_first_name}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="content">
+                        <p>
+                          <div class="header">Mother's Maiden Name</div>
+                            {{thing.mother_maiden_name}}
+                        </p>
+                        <p>
+                          <div class="header">Mother's Last Name</div>
+                            {{thing.mother_last_name}}
+                        </p>
+                        <p>
+                          <div class="header">Father's First Name</div>
+                            {{thing.father_first_name}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="content">
+                        <p>
+                          <div class="header">Father's Last Name</div>
+                            {{thing.father_last_name}}
+                        </p>
+                        <p>
+                          <div class="header">Searching For My:</div>
+                          {{thing.get_searching_for_display}}
+                        </p>
+                      </div>
+                    </div>
 
-              <div class="item">
-                <div class="header">Birth Country</div>
-                  {{thing.country_of_birth}}
-                  <div class="header">Birth Hospital</div>
-                    {{thing.birth_hospital}}
-                  <div class="header">Birth Gender</div>
-                    {{thing.get_sex_at_birth_display}}
               </div>
-              <div class="item">
-                <div class="header">Eye Color</div>
-                  {{thing.get_eye_color_display}}
-                  <div class="header">Mother's First Name</div>
-                    {{thing.mother_first_name}}
-                    <div class="header">Mother's Maiden Name</div>
-                      {{thing.mother_maiden_name}}
-              </div>
-              <div class="item">
-                <div class="header">Mother's Last Name</div>
-                  {{thing.mother_last_name}}
-                  <div class="header">Father's First Name</div>
-                    {{thing.father_first_name}}
-                    <div class="header">Father's Last Name</div>
-                      {{thing.father_last_name}}
-                      <div class="header">Searching For My:</div>
-                        {{thing.get_searching_for_display}}
-              </div>
-            </div>
-              </div>
+      </div>
   </div>
     <div class="ui grid">
       <div class="four wide column">
