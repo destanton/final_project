@@ -15,7 +15,7 @@ def create_user_profile(**kwargs):
 
 class Profile(models.Model):
     user = models.OneToOneField('auth.User')
-    picture = models.FileField(upload_to='profile_img')
+    picture = models.FileField(upload_to='profile_img', blank=True)
     first_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=50, blank=True)
     last_name = models.CharField(max_length=50)
@@ -33,7 +33,7 @@ class Profile(models.Model):
     def profile_pic(self):
         if self.picture:
             return self.picture.url
-        return "https://s3.amazonaws.com/tdh-des/picture_QxzJ8oP.png"
+        return "https://s3.amazonaws.com/tdh-des/images/picture.png"
 
     @property
     def get_year(self):
@@ -78,12 +78,12 @@ class About(models.Model):
         ('Sibling', 'Sibling')
     ]
     user = models.OneToOneField('auth.User')
-    biography = models.TextField()
-    birthdate = models.DateField(null=True)
+    biography = models.TextField(blank=True)
+    birthdate = models.DateField(null=True, blank=True)
     city_of_birth = models.CharField(max_length=255, blank=True)
     state_of_birth = models.CharField(max_length=150, blank=True)
     country_of_birth = models.CharField(max_length=255, blank=True)
-    sex_at_birth = models.CharField(max_length=10, choices=GENDER)
+    sex_at_birth = models.CharField(max_length=10, choices=GENDER, blank=True)
     eye_color = models.CharField(max_length=10, choices=EYE_COLOR)
     mother_first_name = models.CharField(max_length=150, blank=True)
     mother_maiden_name = models.CharField(max_length=150, blank=True)
@@ -118,7 +118,7 @@ class Relative(models.Model):
 
 class Image(models.Model):
     user = models.ForeignKey('auth.User')
-    picture = models.FileField(upload_to='album_img')
+    picture = models.FileField(upload_to='album_img', blank=True)
     description = models.CharField(max_length=150, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
