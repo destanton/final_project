@@ -10,7 +10,7 @@
 }
 
 .ui.grid {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .ui-white-header{
@@ -69,6 +69,25 @@ a:hover{
   margin-bottom: 20px;
   background: ;
   /*height: 540px;*/
+
+  padding: 1em 1.5em;
+  line-height: 1.4285em;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
+  transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
+  border-radius: 0.28571429rem;
+  box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
+  font-size: 1.25em;
+}
+
+.ui--- {
+  position: relative;
+  min-height: 1em;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  background: ;
+  /*height: 540px;*/
+
   padding: 1em 1.5em;
   line-height: 1.4285em;
   color: rgba(0, 0, 0, 0.87);
