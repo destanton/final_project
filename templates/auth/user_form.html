@@ -3,8 +3,27 @@
 {% block content %}
 <div class="ui container">
   <div class="ui equal width grid">
-    <div class="column"></div>
-      <div class="ui ten wide column">
+    <div class="column">
+      <div class="ui teal message">
+        <div class="header">
+          Getting Started
+        </div>
+        <hr>
+        <div class="message">
+          <p>Our application is designed to help adopted people find and reconnect with their family members. &nbsp;
+             Once you've created a user account you'll be able to:</p>
+        </div>
+        <hr>
+        <ul class="list">
+          <li>Update your Profile</li>
+          <li>Fill out your "About Me" questions and biography. [This information is crucial as it's used in the search]</li>
+          <li>Send other users private messages</li>
+          <li>Import pictures to your profile-these will be visible to other users</li>
+          <li>Import your 23andMe Relative information</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ui eight wide column">
         <div class="ui raised form segment">
           <form class="" action="" method="post">
             {% csrf_token %}
