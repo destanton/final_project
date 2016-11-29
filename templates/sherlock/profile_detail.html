@@ -6,7 +6,7 @@
 
 {% if request.user.is_authenticated %}
 <div class="ui container">
-    <div class="ui grid">
+    <div class="ui equal width grid">
       <div class="five wide column">
             <div class="ui card">
               <div class="image">
@@ -42,7 +42,7 @@
             </div>
           </div>
     <div class="eleven wide column">
-      <div class="ui raised very padded text container segment">
+      <div class="ui-- raised very padded text container segment">
           <h2 class="ui left floated header">About Me</h2>
             {% if object.user == request.user %}
             <h5 class="ui right floated header"><a href="{% url 'about_update_view' object.user.profile.id %}"><i class="extra large edit icon"></i></a></h5>
@@ -50,6 +50,7 @@
             <br>
         <div class="ui divider"></div>
         {% for thing in object.get_about %}
+
           <div class="ui very relaxed horizontal list">
               <div class="item">
                   <div class="content">
@@ -69,6 +70,7 @@
                     <div class="header">Birth State</div>
                       {{thing.state_of_birth}}
                       </p>
+
                   </div>
               </div>
               <div class="item">
@@ -89,6 +91,7 @@
                       <div class="header">Eye Color</div>
                         {{thing.get_eye_color_display}}
                     </p>
+
                 </div>
               </div>
               <div class="item">
@@ -105,14 +108,15 @@
                     <div class="header">Mother's Last Name</div>
                       {{thing.mother_last_name}}
                   </p>
-                </div>
-              </div>
-              <div class="item">
-                <div class="content">
                   <p>
                     <div class="header">Father's First Name</div>
                       {{thing.father_first_name}}
                   </p>
+                </div>
+              </div>
+              <div class="item">
+                <div class="content">
+
                   <p>
                     <div class="header">Father's Last Name</div>
                       {{thing.father_last_name}}
@@ -127,11 +131,10 @@
             </div>
       </div>
     </div>
-    <div class="five wide column">
 
-    </div>
-      <div class="eleven wide column">
-        <div class="ui raised very padded text container segment">
+      <div class="sixteen wide column">
+        <span>
+        <div class="ui-- raised text container segment"></span>
             <h2 class="ui center aligned icon header">
               <i class="user icon"></i>Biography</h2>
             <div class="ui divider"></div>
@@ -141,6 +144,7 @@
         </div>
       </div>
 </div>
+
           {% endfor %}
 
   <div class="ui divider"></div>

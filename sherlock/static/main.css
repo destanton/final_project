@@ -65,8 +65,8 @@ a:hover{
 .ui-- {
   position: relative;
   min-height: 1em;
-  margin-left: -50px;
-  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 20px;
   background: ;
   /*height: 540px;*/
   padding: 1em 1.5em;
