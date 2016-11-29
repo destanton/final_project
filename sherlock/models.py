@@ -121,7 +121,7 @@ class Relative(models.Model):
     # def __str__(self):
     #     return self.user.username
 
-
+ 
 class Image(models.Model):
     user = models.ForeignKey('auth.User')
     picture = models.FileField(upload_to='album_img', blank=True)

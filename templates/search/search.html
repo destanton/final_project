@@ -18,13 +18,19 @@
           </button>
         </div>
       </form>
-
+      <br>
       </div>
       {% if page.has_previous or page.has_next %}
           <div>
-              {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+              {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}<button class="ui left labeled icon mini button">
+  <i class="left arrow icon"></i>
+  Previous
+</button>{% if page.has_previous %}</a>{% endif %}
               |
-              {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+              {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}<button class="ui right labeled icon mini button">
+  <i class="right arrow icon"></i>
+  Next
+</button>{% if page.has_next %}</a>{% endif %}
           </div>
       {% endif %}
     </div>
@@ -84,8 +90,8 @@
                   </div>
 
 
-                  <a href="{% url 'messages_compose' %}?recipient={{result.object.user.username}}"><div class="ui primary button">Message</div></a>
-                  <a href="{% url 'profile_detail_view' result.object.user.id %}"><div class="ui right floated button">View <i class="right chevron icon"></i></div></a>
+                  <a href="{% url 'messages_compose' %}?recipient={{result.object.user.username}}"><div class="ui primary button">Message {{ object.user.first_name }}</div></a>
+                  <a href="{% url 'profile_detail_view' result.object.user.id %}"><div class="ui right floated button">View Profile <i class="right chevron icon"></i></div></a>
 
                   </div>
                 </div>
