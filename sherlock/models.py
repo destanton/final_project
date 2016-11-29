@@ -62,6 +62,7 @@ class About(models.Model):
         ('Male', 'Male'),
         ('Female', 'Female')
     ]
+
     EYE_COLOR = [
         ('Black', 'Black'),
         ('Blue', 'Blue'),
@@ -71,12 +72,17 @@ class About(models.Model):
         ('Hazel', 'Hazel'),
         ('Other', 'Other')
     ]
+
     FAMILY = [
         ('Cousin', 'Cousin'),
         ('Child', 'Child'),
         ('Parent', 'Parent'),
-        ('Sibling', 'Sibling')
+        ('Sibling', 'Sibling'),
+        ('Aunt', 'Aunt'),
+        ('Uncle', 'Uncle'),
+        ('Grandparent', 'Grandparent')
     ]
+
     user = models.OneToOneField('auth.User')
     biography = models.TextField(blank=True)
     birthdate = models.DateField(null=True, blank=True)
@@ -84,14 +90,14 @@ class About(models.Model):
     state_of_birth = models.CharField(max_length=150, blank=True)
     country_of_birth = models.CharField(max_length=255, blank=True)
     sex_at_birth = models.CharField(max_length=10, choices=GENDER, blank=True)
-    eye_color = models.CharField(max_length=10, choices=EYE_COLOR)
+    eye_color = models.CharField(max_length=10, choices=EYE_COLOR, blank=True)
     mother_first_name = models.CharField(max_length=150, blank=True)
     mother_maiden_name = models.CharField(max_length=150, blank=True)
     mother_last_name = models.CharField(max_length=150, blank=True)
     father_first_name = models.CharField(max_length=150, blank=True)
     father_last_name = models.CharField(max_length=150, blank=True)
     birth_hospital = models.CharField(max_length=150, blank=True)
-    searching_for = models.CharField(max_length=10, choices=FAMILY)
+    searching_for = models.CharField(max_length=10, choices=FAMILY, blank=True)
 
     # def __str__(self):
     #     return self.biography

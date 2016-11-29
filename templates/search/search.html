@@ -7,24 +7,46 @@
   <div class="ui grid">
 
     <div class="three wide column">
-    <h2>Search</h2>
-    <div class="ui small form">
-    <form method="get" action=".">
-      <div class="ui action input">
-        <input id="id_q" name="q" type="search" value="{{ request.GET.q }}">
-        <button class="ui icon button" type="submit">
-          <i class="search icon"></i>
-        </button>
-      </div>
-    </form>
-    </div>
-    {% if page.has_previous or page.has_next %}
-        <div>
-            {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
-            |
-            {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+    <div class="column">
+      <h2>Search</h2>
+      <div class="ui small form">
+      <form method="get" action=".">
+        <div class="ui action input">
+          <input id="id_q" name="q" type="search" value="{{ request.GET.q }}">
+          <button class="ui icon button" type="submit">
+            <i class="search icon"></i>
+          </button>
         </div>
-    {% endif %}
+      </form>
+
+      </div>
+      {% if page.has_previous or page.has_next %}
+          <div>
+              {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+              |
+              {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+          </div>
+      {% endif %}
+    </div>
+    <br>
+    <div class="column">
+      <div class="ui teal message">
+        <div class="header">
+          What to Search?
+          <hr>
+        </div>
+        <div class="message">
+          <p>You can search for keywords in fields that users have included in their profiles.</p>
+          <p>Some examples:</p>
+        </div>
+        <ul class="list">
+          <li><i>"John Doe"</i></li>
+          <li><i>"Charleston SC"</i></li>
+          <li><i>"Spartanburg Regional Hospital"</i></li>
+        </ul>
+      </div>
+    </div>
+
     </div>
 
     <div class="one wide column">
@@ -40,7 +62,7 @@
             <div class="ui divided animated items list">
               <div class="item">
                 <div class="image">
-                  <img class="ui small image" src="{{ result.object.user.profile.picture.url }}" alt="Picture Not Found">
+                  <img class="ui small image" src="{{ result.object.user.profile.profile_pic }}" alt="Picture Not Found">
                 </div>
                 <div class="content">
                   <h2 class="ui header">{% highlight result.object.user.profile.first_name with request.GET.q %} {% highlight result.object.user.profile.last_name with request.GET.q %}
