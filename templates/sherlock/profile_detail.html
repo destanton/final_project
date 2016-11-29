@@ -6,11 +6,11 @@
 
 {% if request.user.is_authenticated %}
 <div class="ui-p-container">
-    <div class="ui grid">
-      <div class="four wide column">
+    <div class="ui equal width grid">
+      <div class="six wide column">
             <div class="ui card">
               <div class="image">
-                <img src="{{object.picture.url}}" alt="Profile Photo" />
+                <img src="{{object.profile_pic}}" alt="Profile Photo" />
               </div>
               <div class="content">
                 <div class="header">{{object.first_name}} {{object.last_name}}</div>
@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-    <div class="eight wide column">
+    <div class="ten wide column">
       <div class="ui- raised very padded text container segment">
           <h2 class="ui left floated header">About Me</h2>
           {% if object.user == request.user %}
@@ -50,20 +50,23 @@
           {% endif %}
           <br>
           <div class="ui divider"></div>
-            {% for thing in object.get_about %}
-            <div class="ui relaxed list">
-              <div class="item">
-                <div class="header">Birthday</div>
-                  {{thing.birthdate}}
-              </div>
-              <div class="item">
-                <div class="header">Age</div>
-                  {{thing.birthdate|timesince}}
-              </div>
-              <div class="item">
-                <div class="header">Birth City</div>
-                  {{thing.city_of_birth}}
-              </div>
+          {% for thing in object.get_about %}
+            <div class="ui horizontal list">
+              <br>
+                    <div class="item">
+                        <div class="content">
+                          <div class="header">Birthday</div>
+                          {{thing.birthdate}}
+
+                        <div class="header">Age</div>
+                          {{thing.birthdate|timesince}}
+                          <div class="header">Birth City</div>
+                            {{thing.city_of_birth}}
+                      </div>
+
+                      </div>
+
+
               <div class="item">
                 <div class="header">Birth State</div>
                   {{thing.state_of_birth}}
@@ -111,18 +114,22 @@
             </div>
       </div>
     </div>
-              <div class="four wide column">
-                <div class="ui-- raised very padded text container segment">
-                    <h2 class="ui center aligned icon header">
-                      <i class="user icon"></i>Biography</h2>
-                    <div class="ui divider"></div>
-                      <p>
-                        {{thing.biography}}
-                      </p>
-                </div>
-              </div>
-          {% endfor %}
   </div>
+    <div class="ui grid">
+      <div class="four wide column">
+        <div class="ui-- raised very padded text container segment">
+            <h2 class="ui center aligned icon header">
+              <i class="user icon"></i>Biography</h2>
+            <div class="ui divider"></div>
+              <p>
+                {{thing.biography}}
+              </p>
+        </div>
+      </div>
+    </div>
+
+          {% endfor %}
+
   <div class="ui divider"></div>
   <a href="{% url 'image_all_view' %}">All images</a>
   {% if object.user == request.user %}
