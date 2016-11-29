@@ -95,6 +95,7 @@ class ImageAllView(TemplateView):
         context["image"] = Image.objects.all()
         return context
 
+
 class ImageAddView(CreateView):
     model = Image
     fields = ('picture', 'description', )
