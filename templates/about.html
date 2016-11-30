@@ -2,63 +2,222 @@
 {% load staticfiles %}
 
 {% block content %}
-  <div class="ui container">
-
+  <div class="ui-p-container">
     <div class="ui grid">
-
       <div class="four wide column">
         <div class="content">
           <img class="ui medium bordered image" src="{% static 'images/DanielleHeadshot.jpg' %}" alt="Danielle Image" />
           <p>
             Danielle Stanton
           </p>
-          <img class="ui medium bordered image" src="{% static 'images/tommy.jpg' %}" alt="Tommy Image" />
-          <p>
-            Tommy Huynh
-          </p>
+
         </div>
       </div>
-      <div class="six wide column">
+      <div class="four wide column">
         <div class="content">
-          <h3>The Application:</h3>
+          <h2>The Application:</h2>
           <p>
             Seekers is designed to bring adopted people together with their birth relatives. It is a project
             Danielle Stanton and Tommy Huynh created to meet their final project requirements for the Backend Engineering course at The Iron Yard in Greenville, SC.
           </p>
-          <h3>The Feature Set:</h3>
+          <h2>The Feature Set:</h2>
           <p>
             Logged in users can:
-            <ol class="ui list">
-              <li value="*">Update their profile information and set a custom photo</li>
-              <li value="*">Fill out an "About Me" and "Biography" form
-              <ol>
-                <li value="-">This information is used and filtered through in the search</li>
-              </ol></li>
-              <li value="*">Upload photos to their profile page</li>
-              <li value="*">Search the site for other users based on multiple criteria</li>
-              <li value="*">Send other users private messages</li>
-              <li value="*">Import 23andMe Relative information
-              <ol>
-                <li value="-">Imported results are stored on the user's profile page</li>
-                <li value="-">This information can be helpful as people search a user's profile</li>
-              </ol></li>
-            </ol>
           </p>
+            <div class="ui large list">
+              <div class="item">
+                <i class="angle double right icon"></i>
+                <div class="content">
+                  <div class="header">Update their profile information and set a custom photo</div>
+                </div>
+                </div>
+                <div class="item">
+                  <i class="angle double right icon"></i>
+                  <div class="content">
+                    <div class="header">Fill out an "About Me" and "Biography" form</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <i class="angle double right icon"></i>
+                  <div class="content">
+                    <div class="header">Update their profile information and set a custom photo</div>
+                    <div class="description">
+                        This information is used and filtered through in the search
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <i class="angle double right icon"></i>
+                  <div class="content">
+                    <div class="header">Upload photos to their profile page</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <i class="angle double right icon"></i>
+                  <div class="content">
+                    <div class="header">Search the site for other users based on multiple criteria</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <i class="angle double right icon"></i>
+                  <div class="content">
+                    <div class="header">Send other users private messages</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <i class="angle double right icon"></i>
+                  <div class="content">
+                    <div class="header">Import 23andMe Relative information</div>
+                    <div class="description">
+                        Imported results are stored on the user's profile page <br>
+                        This information can be helpful as people search a user's profile
+                    </div>
+                  </div>
+                </div>
+            </div>
         </div>
       </div>
-      <div class="six wide column">
-        <h3>The Roadmap:</h3>
+      <div class="four wide column">
+        <h2>The Roadmap:</h2>
         <p>
-          blah blah blah
+          We accomplished many key features within our limited development window. However, given this time constraint, we would like to continue working on this
+          application with these additional features in mind:
         </p>
-        <h3>Technology Used:</h3>
+        <div class="ui large list">
+          <div class="item">
+            <i class="angle double right icon"></i>
+            <div class="content">
+              <div class="header">
+                A picture gallery for user image uploads
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <i class="angle double right icon"></i>
+            <div class="content">
+              <div class="header">
+                More "About Me" categories catering to other family members
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <i class="angle double right icon"></i>
+            <div class="content">
+              <div class="header">
+                Facebook and Google OAuth
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <i class="angle double right icon"></i>
+            <div class="content">
+              <div class="header">
+                Inclusion of search faceting
+              </div>
+            </div>
+          </div>
+        </div>
         <p>
-          Put list here...
+          Please contact us there's something you'd like to see included as well.
         </p>
-
+        <h2>Technology Used:</h2>
+          <div class="ui large list">
+            <div class="item">
+              <i class="angle double right icon"></i>
+              <div class="content">
+                <div class="header">
+                  Python 3.5.2
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <i class="angle double right icon"></i>
+              <div class="content">
+                <div class="header">
+                  Django 1.10.2
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <i class="angle double right icon"></i>
+              <div class="content">
+                <div class="header">
+                  Django Messages
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <i class="angle double right icon"></i>
+              <div class="content">
+                <div class="header">
+                  Django Haystack
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <i class="angle double right icon"></i>
+              <div class="content">
+                <div class="header">
+                  Python Social Auth
+                </div>
+              </div>
+            </div>
+          <div class="item">
+            <i class="angle double right icon"></i>
+            <div class="content">
+              <div class="header">
+                23andME OAuth
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <i class="angle double right icon"></i>
+            <div class="content">
+              <div class="header">
+                Django Widget Tweaks
+              </div>
+            </div>
+          </div>
+            <div class="item">
+              <i class="angle double right icon"></i>
+              <div class="content">
+                <div class="header">
+                  Elasticsearch
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <i class="angle double right icon"></i>
+              <div class="content">
+                <div class="header">
+                  Semantic UI CSS Framework
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <i class="angle double right icon"></i>
+              <div class="content">
+                <div class="header">
+                  PostgreSQL
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <i class="angle double right icon"></i>
+              <div class="content">
+                <div class="header">
+                  AWS S3 - Static assets and media uploads
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
-
-    </div>
+      <div class="four wide column">
+        <img class="ui medium bordered image" src="{% static 'images/tommy.jpg' %}" alt="Tommy Image" />
+        <p>
+          Tommy Huynh
+        </p>
+      </div>
     </div>
   </div>
 
