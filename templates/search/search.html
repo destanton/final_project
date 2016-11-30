@@ -20,42 +20,7 @@
       </form>
       <br>
       </div>
-      {% if page.has_previous or page.has_next %}
-          <div>
-              {% if page.has_previous %}
-              <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
 
-                <button class="ui left labeled icon mini inverted blue button">
-                <i class="left arrow icon"></i>
-                Previous
-              </button>
-              {% else %}
-              <button class="ui left labeled icon mini inverted disabled blue button">
-              <i class="left arrow icon"></i>
-              Previous
-              {% endif %}
-              {% if page.has_previous %}
-              </a>
-              {% endif %}
-
-              {% if page.has_next %}
-              <a href="?q={{ query }}&amp;page={{ page.next_page_number }}">
-
-                <button class="ui right labeled icon mini inverted blue button">
-                <i class="right arrow icon"></i>
-                Next
-                </button>
-                {% else %}
-                <button class="ui right labeled icon mini inverted disabled blue button">
-                <i class="right arrow icon"></i>
-                Next
-                </button>
-                {% endif %}
-                {% if page.has_next %}
-                </a>
-                {% endif %}
-          </div>
-      {% endif %}
     </div>
     <br>
     <div class="column">
@@ -83,6 +48,42 @@
 
     <div class="twelve wide column">
         {% if query %}
+        {% if page.has_previous or page.has_next %}
+            <div class="ui middle aligned center aligned grid">
+                {% if page.has_previous %}
+                <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
+
+                  <button class="ui left labeled icon large inverted blue button">
+                  <i class="left arrow icon"></i>
+                  Previous Page
+                </button>
+                {% else %}
+                <button class="ui left labeled icon inverted large disabled blue button">
+                <i class="left arrow icon"></i>
+                Previous Page
+                {% endif %}
+                {% if page.has_previous %}
+                </a>
+                {% endif %}
+
+                {% if page.has_next %}
+                <a href="?q={{ query }}&amp;page={{ page.next_page_number }}">
+
+                  <button class="ui right labeled icon large inverted blue button">
+                  <i class="right arrow icon"></i>
+                  Next Page
+                  </button>
+                  {% else %}
+                  <button class="ui right labeled icon inverted large disabled blue button">
+                  <i class="right arrow icon"></i>
+                  Next Page
+                  </button>
+                  {% endif %}
+                  {% if page.has_next %}
+                  </a>
+                  {% endif %}
+            </div>
+        {% endif %}
 
             <h2>We Found:</h2>
 
