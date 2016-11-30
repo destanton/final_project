@@ -1,7 +1,29 @@
 .masthead {
   background-image: url(https://s3.amazonaws.com/tdh-des/images/Embrace.jpg) !important;
-  background-size: cover !important;
-  min-height: 800px;
+  background-size: 1676px 987px !important;
+  background-repeat: no-repeat;
+  height: 665px;
+}
+
+.ui.horizontal.segments {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  box-sizing: inherit;
+  position: relative;
+  padding: 0em;
+  background-color: #FFFFFF;
+  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+
+  border-radius: 0.28571429rem;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.4285em;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .ui.menu {
@@ -16,8 +38,19 @@
 .ui-white-header{
   color: white;
   text-align: right;
+  font-size: 24px;
 }
 
+.size {
+  font-size: 5rem;
+  margin-bottom: 0px;
+
+}
+
+.size2 {
+  margin-top: 0px;
+
+}
 .ui.header{
   color: black;
 }
@@ -171,7 +204,7 @@ html, body {
 }
 
 .site-footer {
-  margin-top: 10px;
+  margin-top: 4px;
   padding: 2.0rem 1.5rem;
   background: #F5F6F7;
   text-align: left;

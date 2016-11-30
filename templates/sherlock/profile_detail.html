@@ -157,7 +157,7 @@
           {% endfor %}
 
   <div class="ui divider"></div>
-  <a href="{% url 'image_all_view' %}">All images</a>
+  <!-- <a href="{% url 'image_all_view' %}">All images</a> -->
   {% if object.user == request.user %}
   <a class="ui blue right floated basic button" href="{% url 'image_add_view' %}"><i class="ui camera icon"></i>Upload Image</a>
 
