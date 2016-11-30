@@ -27,6 +27,7 @@ class Twentythreeandme(BaseOAuth2):
         #                          headers={'Authorization': 'Bearer {}'.format(access_token)})
         family = self.get_json('https://api.23andme.com/1/relatives/',
                                headers={'Authorization': 'Bearer {}'.format(access_token)})
+        print(family)
         if family:
             item = (family[0]["relatives"])
             # relative = Relative.objects.create(user=self.request.user)
