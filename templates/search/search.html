@@ -84,7 +84,7 @@
                       <p>City of Birth: {% highlight result.object.user.about.city_of_birth with request.GET.q %}</p>
                       <p>State of Birth: {% highlight result.object.user.about.state_of_birth with request.GET.q %}</p>
                       <p>Hospital: {% highlight result.object.user.about.birth_hospital with request.GET.q %}</p>
-                      <p class="transition hidden">{% highlight result.object.user.about.biography with request.GET.q %}</p>
+                      <p class="transition hidden">Biography: {% highlight result.object.user.about.biography with request.GET.q %}</p>
                       <p></p>
                     </div>
                   </div>
