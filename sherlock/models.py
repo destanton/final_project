@@ -56,6 +56,13 @@ class Profile(models.Model):
     def get_image(self):
         return Image.objects.filter(user=self.user)
 
+    @property
+    def cap_first_name(self):
+        return Profile.objects.get(user=self.user).first_name.title()
+
+    @property
+    def cap_last_name(self):
+        return Profile.objects.get(user=self.user).last_name.title()
 
 class About(models.Model):
     GENDER = [
@@ -97,7 +104,7 @@ class About(models.Model):
     father_first_name = models.CharField(max_length=150, blank=True)
     father_last_name = models.CharField(max_length=150, blank=True)
     birth_hospital = models.CharField(max_length=150, blank=True)
-    searching_for = models.CharField(max_length=10, choices=FAMILY, blank=True)
+    searching_for = models.CharField(max_length=20, choices=FAMILY, blank=True)
 
     # def __str__(self):
     #     return self.biography
@@ -121,7 +128,7 @@ class Relative(models.Model):
     # def __str__(self):
     #     return self.user.username
 
- 
+
 class Image(models.Model):
     user = models.ForeignKey('auth.User')
     picture = models.FileField(upload_to='album_img', blank=True)

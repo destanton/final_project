@@ -71,7 +71,7 @@
                   <img class="ui small image" src="{{ result.object.user.profile.profile_pic }}" alt="Picture Not Found">
                 </div>
                 <div class="content">
-                  <h2 class="ui header">{% highlight result.object.user.profile.first_name with request.GET.q %} {% highlight result.object.user.profile.last_name with request.GET.q %}
+                  <h2 class="ui header">{% highlight result.object.user.profile.cap_first_name with request.GET.q %} {% highlight result.object.user.profile.cap_last_name with request.GET.q %}
                   </h2>
                   <div class="ui accordion">
                     <div class="title">
