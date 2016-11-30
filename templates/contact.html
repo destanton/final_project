@@ -16,7 +16,11 @@
       <form class="" action="{% url 'send_email_view' %}" method="post">
         {% csrf_token %}
         <p>
+          {% if request.user.is_authenticated %}
+          {% render_field form.name class="field" value=request.user.profile.cap_full_name %}
+          {% else %}
           {{form.name|add_class:"field"|attr:"placeholder: John Doe"}}
+          {% endif %}
         </p>
         <p>
           {{form.email|add_class:"field"|attr:"placeholder: you@email.com"}}

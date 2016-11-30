@@ -64,6 +64,10 @@ class Profile(models.Model):
     def cap_last_name(self):
         return Profile.objects.get(user=self.user).last_name.title()
 
+    @property
+    def cap_full_name(self):
+        return "{} {}".format(self.cap_first_name, self.cap_last_name)
+
 class About(models.Model):
     GENDER = [
         ('Male', 'Male'),
