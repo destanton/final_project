@@ -48,7 +48,7 @@
         <ul class="list">
           <li><i>"John Doe"</i></li>
           <li><i>"Charleston SC"</i></li>
-          <li><i>"Spartanburg Regional Hospital"</i></li>
+          <li><i>"Spartanburg Regional <strong></strong>Hospital"</i></li>
         </ul>
       </div>
     </div>
@@ -79,12 +79,12 @@
                       About
                     </div>
                     <div class="content">
-                      <p>Birthday: {% highlight result.object.user.about.birthdate with request.GET.q %}</p>
-                      <p>Age: {{ result.object.user.about.birthdate|timesince }}</p>
-                      <p>City of Birth: {% highlight result.object.user.about.city_of_birth with request.GET.q %}</p>
-                      <p>State of Birth: {% highlight result.object.user.about.state_of_birth with request.GET.q %}</p>
-                      <p>Hospital: {% highlight result.object.user.about.birth_hospital with request.GET.q %}</p>
-                      <p class="transition hidden">Biography: {% highlight result.object.user.about.biography with request.GET.q %}</p>
+                      <p><strong>Birthday:</strong> {% highlight result.object.user.about.birthdate with request.GET.q %}</p>
+                      <p><strong>Age:</strong> {{ result.object.user.about.birthdate|timesince }}</p>
+                      <p><strong>City of Birth:</strong> {% highlight result.object.user.about.city_of_birth with request.GET.q %}</p>
+                      <p><strong>State of Birth:</strong> {% highlight result.object.user.about.state_of_birth with request.GET.q %}</p>
+                      <p><strong>Hospital:</strong> {% highlight result.object.user.about.birth_hospital with request.GET.q %}</p>
+                      <p class="transition hidden"><strong>Biography:</strong> {% highlight result.object.user.about.biography with request.GET.q %}</p>
                       <p></p>
                     </div>
                   </div>
