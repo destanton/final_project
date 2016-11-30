@@ -22,15 +22,38 @@
       </div>
       {% if page.has_previous or page.has_next %}
           <div>
-              {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}<button class="ui left labeled icon mini button">
-  <i class="left arrow icon"></i>
-  Previous
-</button>{% if page.has_previous %}</a>{% endif %}
-              |
-              {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}<button class="ui right labeled icon mini button">
-  <i class="right arrow icon"></i>
-  Next
-</button>{% if page.has_next %}</a>{% endif %}
+              {% if page.has_previous %}
+              <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
+
+                <button class="ui left labeled icon mini inverted blue button">
+                <i class="left arrow icon"></i>
+                Previous
+              </button>
+              {% else %}
+              <button class="ui left labeled icon mini inverted disabled blue button">
+              <i class="left arrow icon"></i>
+              Previous
+              {% endif %}
+              {% if page.has_previous %}
+              </a>
+              {% endif %}
+
+              {% if page.has_next %}
+              <a href="?q={{ query }}&amp;page={{ page.next_page_number }}">
+
+                <button class="ui right labeled icon mini inverted blue button">
+                <i class="right arrow icon"></i>
+                Next
+                </button>
+                {% else %}
+                <button class="ui right labeled icon mini inverted disabled blue button">
+                <i class="right arrow icon"></i>
+                Next
+                </button>
+                {% endif %}
+                {% if page.has_next %}
+                </a>
+                {% endif %}
           </div>
       {% endif %}
     </div>
@@ -76,7 +99,7 @@
                   <div class="ui accordion">
                     <div class="title">
                       <i class="big dropdown icon"></i>
-                      About
+                      More Info
                     </div>
                     <div class="content">
                       <p><strong>Birthday:</strong> {% highlight result.object.user.about.birthdate with request.GET.q %}</p>
@@ -88,10 +111,10 @@
                       <p></p>
                     </div>
                   </div>
-
+                  <br>
 
                   <a href="{% url 'messages_compose' %}?recipient={{result.object.user.username}}"><div class="ui primary button">Message {{ object.user.first_name }}</div></a>
-                  <a href="{% url 'profile_detail_view' result.object.user.id %}"><div class="ui right floated button">View Profile <i class="right chevron icon"></i></div></a>
+                  <a href="{% url 'profile_detail_view' result.object.user.id %}"><div class="ui right floated inverted red button">View Profile <i class="right chevron icon"></i></div></a>
 
                   </div>
                 </div>
