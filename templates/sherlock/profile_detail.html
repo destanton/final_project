@@ -13,7 +13,7 @@
                 <img src="{{object.profile_pic}}" alt="Profile Photo" />
               </div>
               <div class="content">
-                <div class="header">{{object.first_name}} {{object.last_name}}</div>
+                <div class="header">{{object.first_name|capfirst}} {{object.last_name|capfirst}}</div>
                 <div class="meta">
                   <a></a>
                 </div>
@@ -82,7 +82,7 @@
                 <div class="content">
                     <p>
                       <div class="header">Birth Country</div>
-                        {{thing.country_of_birth|default:"n/a"}}
+                        {{thing.country_of_birth|default:"USA"}}
                     </p>
                     <p>
                       <div class="header">Birth Hospital</div>
