@@ -45,6 +45,7 @@
 .ui.menu {
   margin-top: 0em;
   margin-bottom: 0em;
+  min-height: 4.857143em;
 }
 
 .ui.grid {
