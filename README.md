@@ -1,6 +1,5 @@
 # Seekers
-Live: [Seekers](http://arcane-reef-60277.herokuapp.com/)
-Seekers is a social platform designed for adopted people and their birth families to potential find each other.
+[Seekers](http://arcane-reef-60277.herokuapp.com/) is a social platform designed for adopted people and their birth families to potential find each other.
 
 # Features:
 * A user can create an account and fill out a detailed biography as best as possible.
